@@ -7,5 +7,6 @@ Statisk sajt utan byggsteg. Netlify publicerar roten av repot automatiskt vid va
 - `index.html` – hela appen (vädret hämtas live från Open-Meteo)
 - `data.json` – terräng, liftar, pister och rutter för kartorna (OpenStreetMap, Mapzen Terrain)
 - `netlify/functions/notes.mjs` – API för de gemensamma listorna (sparas i Netlify Blobs)
+- `netlify/functions/photos.mjs` – API för det gemensamma bildalbumet (sparas i Netlify Blobs)
 - `sw.js`, `manifest.webmanifest`, `icons/` – installerbar app och offline-stöd
 - `house/` – bilder på huset (Idre Fjäll och egna bilder)
