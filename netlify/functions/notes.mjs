@@ -56,6 +56,17 @@ export function apply(st, op) {
       const n = l.items.length; l.items = l.items.filter((x) => !x.done);
       return l.items.length !== n;
     }
+    case "fav": { // gemensamma favoriter bland events
+      if (typeof op.k !== "string" || !op.k || op.k.length > 200) return false;
+      st.favs = st.favs || {};
+      if (op.on) {
+        if (st.favs[op.k] || Object.keys(st.favs).length >= 500) return false;
+        st.favs[op.k] = { by: clean(op.by, 40), ts: Date.now() };
+        return true;
+      }
+      if (!st.favs[op.k]) return false;
+      delete st.favs[op.k]; return true;
+    }
   }
   return false;
 }
