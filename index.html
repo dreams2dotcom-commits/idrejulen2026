@@ -385,7 +385,7 @@ h3{font-weight:700;font-size:17px}
 #alb .abar span{flex-basis:100%;order:-1;font-size:14px}
 #alb .abar .sp{flex:1}
 #alb .abar button,#alb .abar a{white-space:nowrap;background:#ffffff1f;border:0;color:#fff;border-radius:8px;padding:8px 12px;cursor:pointer;font-weight:700;font-size:13.5px;text-decoration:none}
-#alb .abar .pri{background:var(--accent);color:#1b2a3c}
+#alb .abar .pri{background:var(--accent);color:var(--accent-ink)}
 #alb .abar .del[data-arm="1"]{background:#cf3a4f}
 /* install sheet */
 #install{position:fixed;inset:0;z-index:90;background:#05080d99;display:grid;align-items:end;justify-items:center}
@@ -800,7 +800,7 @@ addEventListener('hashchange',()=>show(location.hash.slice(1)));
       return `<li class="${trip?'trip':''}"><span class="dn">${today?'Idag':WD[dt.getDay()]}<small>${dt.getDate()} ${dt.toLocaleDateString('sv-SE',{month:'short'}).replace('.','')}</small></span><span class="wic">${icon(d.weather_code[i])}</span><span class="ds">${WMO[d.weather_code[i]]||''}${sn>=0.5?` · <em>${sn.toFixed(sn<10?1:0).replace('.',',')} cm snö</em>`:''} · ${r0(d.wind_speed_10m_max[i])} m/s</span><span class="tt">${deg(d.temperature_2m_max[i])} <i>/ ${deg(d.temperature_2m_min[i])}</i></span></li>`;}).join('');
     const inTrip=d.time.some(t=>t>=TRIP.start&&t<=TRIP.end);
     body.innerHTML=`<div class="wxnow"><span class="wic">${icon(c.weather_code,c.is_day)}</span><b>${deg(c.temperature_2m)}</b><span>${WMO[c.weather_code]||''} · känns som ${deg(c.apparent_temperature)}</span><div class="wxstats"><span>Vind ${r0(c.wind_speed_10m)} m/s (byar ${r0(c.wind_gusts_10m)})</span>${sd!=null?`<span>Snödjup vid huset ${sd} cm</span>`:''}</div></div>
-      <div><h3 style="margin:0 0 4px;font-size:15px">Kommande dagar</h3>${inTrip?'':`<p class="note" style="margin:0 0 4px">Prognosen når fram till resan från ungefär 10 december.</p>`}<ul class="wxdays">${rows}</ul></div>`+(live?'':`<p class="note" style="margin:0">Visar prognosen från ${ago().replace('senast ','')}. Den uppdateras när guiden kan nå väderservern.</p>`);
+      <div><h3 style="margin:0 0 4px;font-size:15px">Kommande dagar</h3>${inTrip?'':`<p class="note" style="margin:0 0 4px">Prognosen når fram till resan från ungefär ${(()=>{const r=new Date(TRIP.start+'T12:00:00');r.setDate(r.getDate()-9);return r.toLocaleDateString('sv-SE',{day:'numeric',month:'long'});})()}.</p>`}<ul class="wxdays">${rows}</ul></div>`+(live?'':`<p class="note" style="margin:0">Visar prognosen från ${ago().replace('senast ','')}. Den uppdateras när guiden kan nå väderservern.</p>`);
     const snowWeek=d.snowfall_sum.slice(0,7).reduce((a,b)=>a+(b||0),0);
     $('#wxSnow').innerHTML=(sd!=null?`Modellen räknar med ca <b>${sd} cm</b> snö på marken vid huset`:'Snödjup saknas i prognosen')+(snowWeek>=1?` och <b>${r0(snowWeek)} cm</b> nysnö de närmaste sju dagarna.`:', och ingen nämnvärd nysnö de närmaste sju dagarna.')+' Pisternas snödjup, öppna liftar och pister står i Idre Fjälls snörapport.';}
   async function load(){
