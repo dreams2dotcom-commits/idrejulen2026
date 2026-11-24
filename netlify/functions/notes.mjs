@@ -56,6 +56,12 @@ export function apply(st, op) {
       const n = l.items.length; l.items = l.items.filter((x) => !x.done);
       return l.items.length !== n;
     }
+    // delade utgifter och dagens plan
+    case 'addPerson':{const n=clean(op.name,30);st.exp=st.exp||{people:[],items:[]};const P=st.exp.people;if(!n||P.length>=12||P.some(x=>x.toLowerCase()===n.toLowerCase()))return false;P.push(n);return true;}
+    case 'delPerson':{const E=st.exp;if(!E)return false;const i=E.people.indexOf(op.name);if(i<0||E.items.some(x=>x.paid===op.name||x.split.includes(op.name)))return false;E.people.splice(i,1);return true;}
+    case 'addExp':{const E=st.exp;if(!E||typeof op.id!=='string'||!/^[a-z0-9]{6,24}$/i.test(op.id)||E.items.some(x=>x.id===op.id)||E.items.length>=500)return false;const amt=Math.round(Number(op.amt));if(!(amt>0&&amt<=10000000)||!E.people.includes(op.paid))return false;const sp=Array.isArray(op.split)?[...new Set(op.split.filter(n=>E.people.includes(n)))]:[];if(!sp.length)return false;E.items.unshift({id:op.id,what:clean(op.what,60)||'Utlägg',amt,paid:op.paid,split:sp,ts:Date.now(),by:clean(op.by,40)});return true;}
+    case 'delExp':{const E=st.exp;if(!E)return false;const n=E.items.length;E.items=E.items.filter(x=>x.id!==op.id);return E.items.length!==n;}
+    case 'plan':{if(typeof op.d!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(op.d))return false;st.plans=st.plans||{};const tx=String(op.text??'').replace(/\r/g,'').replace(/[\u0000-\u0009\u000b-\u001f\u007f]/g,' ').split('\n').map(l=>l.replace(/\s+/g,' ').trim()).join('\n').replace(/\n{3,}/g,'\n\n').trim().split('\n').slice(0,14).join('\n').slice(0,600);const cur=st.plans[op.d];if(!tx){if(!cur)return false;delete st.plans[op.d];return true;}if(cur&&cur.text===tx)return false;if(!cur&&Object.keys(st.plans).length>=60)return false;st.plans[op.d]={text:tx,by:clean(op.by,40),ts:Date.now()};return true;}
     case "fav": { // gemensamma favoriter bland events
       if (typeof op.k !== "string" || !op.k || op.k.length > 200) return false;
       st.favs = st.favs || {};

@@ -408,6 +408,69 @@ h3{font-weight:700;font-size:17px}
 .favcount{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--accent);color:var(--accent-ink);font-size:11.5px;font-weight:800}
 .favby{font-size:12px;color:var(--muted)}
 @media (max-width:420px){.tab{font-size:10px}}
+
+/* utgifter, dagens plan, resan dit */
+.wxbar{flex-wrap:wrap}
+.planbar{flex-basis:100%;display:flex;align-items:center;gap:8px;background:var(--hdr-chip);border:1px solid transparent;border-radius:12px;padding:7px 10px;color:var(--timber-ink);cursor:pointer;text-align:left;min-width:0;font-size:13.5px}
+.planbar:hover{border-color:var(--hdr-line)}
+.planbar svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linejoin:round;stroke-linecap:round}
+.planbar b{white-space:nowrap}
+.planbar span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.planbar i{font-style:normal;font-weight:800;font-size:12px;opacity:.8;white-space:nowrap}
+.dayplan{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:12px 14px;display:grid;gap:6px}
+.dayplan .hd{display:flex;align-items:center;gap:8px;font-weight:800}
+.dayplan .hd svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linejoin:round;stroke-linecap:round}
+.dayplan .hd button{margin-left:auto}
+.dayplan p{margin:0;white-space:pre-line;font-size:15px}
+.dayplan small{color:var(--muted);font-size:12px}
+#planSheet{position:fixed;inset:0;z-index:91;background:#05080d99;display:grid;align-items:end;justify-items:center}
+#planSheet .sheet{box-sizing:border-box;background:var(--paper);color:var(--ink);width:min(560px,100%);border-radius:18px 18px 0 0;padding:18px max(18px,env(safe-area-inset-right,0px)) calc(18px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));display:grid;gap:12px;max-height:92%;overflow:auto}
+@media (min-width:700px){#planSheet{align-items:center}#planSheet .sheet{border-radius:18px}}
+#planSheet textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--snow);border:1px solid var(--line);border-radius:12px;padding:12px;min-height:150px;resize:vertical;box-sizing:border-box;width:100%}
+#planSheet textarea:focus{outline:2px solid var(--accent);border-color:var(--accent)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.exp{display:grid;gap:18px}
+.expsum{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.expsum div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:grid;gap:2px}
+.expsum b{font-family:var(--f-display);font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
+.expsum span{font-size:12.5px;color:var(--muted)}
+.settle{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:grid;gap:8px}
+.settle h3{margin:0;font-size:16px}
+.settle ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.settle li{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:15px}
+.settle li b.amt{margin-left:auto;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.bal{display:flex;flex-wrap:wrap;gap:6px}
+.bal span{font-size:12.5px;font-weight:700;border-radius:999px;padding:4px 10px;background:var(--wash);font-variant-numeric:tabular-nums}
+.bal .pos{color:var(--ok)}.bal .neg{color:var(--red)}
+.expform{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;gap:10px}
+.expform .grid2{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:8px}
+@media (max-width:420px){.expform .grid2{grid-template-columns:1fr}}
+.expform label{font-size:12.5px;font-weight:700;color:var(--muted);display:grid;gap:4px}
+.expform input,.expform select,.people input{font:inherit;color:var(--ink);background:var(--snow);border:1px solid var(--line);border-radius:10px;padding:10px 11px;min-width:0;width:100%;box-sizing:border-box}
+.expform input:focus,.expform select:focus,.people input:focus{outline:2px solid var(--accent);border-color:var(--accent)}
+.explist{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--line)}
+.explist li{display:grid;grid-template-columns:minmax(0,1fr) auto 34px;gap:4px 10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.explist li b{font-size:15px;overflow-wrap:anywhere}
+.explist li small{display:block;color:var(--muted);font-size:12.5px}
+.explist .amt{font-family:var(--f-mono);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.explist .del[data-arm="1"]{background:var(--red);color:#fff}
+.people{display:grid;gap:8px}
+.people .chips .chip button{border:0;background:none;color:var(--muted);cursor:pointer;padding:0 0 0 6px;font-size:15px;line-height:1}
+.travel{display:grid;gap:12px}
+.travel .tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px}
+.tcard{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;gap:8px;align-content:start}
+.tcard h3{margin:0;font-size:16px}
+.tcard p{margin:0;font-size:14px}
+.tcard ul{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14px}
+.booklist{list-style:none;margin:0;padding:0;display:grid}
+.booklist li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:8px;align-items:start;padding:8px 0;border-bottom:1px solid var(--line)}
+.booklist li:last-child{border-bottom:0}
+.booklist .chk{margin-top:1px}
+.booklist li.done .chk{background:var(--accent);border-color:var(--accent)}
+.booklist li.done .chk svg{opacity:1}
+.booklist li.done b{text-decoration:line-through;color:var(--muted)}
+.booklist small{display:block;color:var(--muted);font-size:12.5px}
+.booklist .due{font-weight:700;color:var(--accent-strong)}
 /* install sheet */
 #install{position:fixed;inset:0;z-index:90;background:#05080d99;display:grid;align-items:end;justify-items:center}
 #install .sheet{box-sizing:border-box;background:var(--paper);color:var(--ink);width:min(560px,100%);border-radius:16px 16px 0 0;padding:20px max(20px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:grid;gap:14px;max-height:90%;overflow:auto}
@@ -426,6 +489,7 @@ h3{font-weight:700;font-size:17px}
     <button class="inst" id="instBtn" type="button"><span class="l">Lägg till på hemskärmen</span><span class="s">Installera</span></button>
   </header>
   <div class="wxbar">
+    <button type="button" class="planbar" id="planBar" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.5h6l-1 5.5 3 3.5H7l3-3.5z"/><path d="M12 12.5V20.5"/></svg><b>Dagens plan</b><span id="planBarTxt"></span><i>Visa ›</i></button>
     <button class="wxbtn" id="wxBtn" type="button" aria-haspopup="dialog"><span class="wic" id="wxIc"></span><b id="wxTemp">–°</b><span class="wtx"><span id="wxDesc">Väder på Idre Fjäll</span><small id="wxSub">Hämtar prognos…</small></span><span class="more">Veckan ›</span></button>
     <a class="cam" href="https://www.idrefjall.se/om-oss/information/webbkameror/" target="_blank" rel="noopener" aria-label="Webbkameror på Idre Fjäll"><svg viewBox="0 0 24 24"><path d="M3.5 8.5h3l1.8-2.5h7.4l1.8 2.5h3v11h-17z"/><circle cx="12" cy="13.6" r="3.6"/></svg><span>Webcam</span></a>
   </div>
@@ -453,6 +517,8 @@ h3{font-weight:700;font-size:17px}
           <div class="time"><span>Utcheckning sön 27 dec</span><b>senast 10:00</b></div>
         </div>
         <p class="note" style="margin:-10px 0 0">Dörrkoden kommer som sms på ankomstdagen och slutar gälla vid utcheckning. Avresestädning ingår.</p>
+
+        <section class="travel" id="travel" aria-labelledby="travelH"></section>
 
         <div class="cols">
           <div class="block">
@@ -541,6 +607,7 @@ h3{font-weight:700;font-size:17px}
         <div id="evDays" style="display:grid;gap:22px">
         <div class="days" id="days" role="group" aria-label="Välj dag"></div>
         <div class="daysum" id="daysum"></div>
+        <div class="dayplan" id="dayPlan"></div>
         <div class="filters" id="evFilters"></div>
         <div class="agenda" id="agenda"></div>
         <div class="callout" id="evNote"></div>
@@ -551,8 +618,10 @@ h3{font-weight:700;font-size:17px}
     </section>
     <section class="view" id="v-listor" data-view="listor" aria-label="Listor" hidden>
       <div class="wrap">
-        <div class="nlhead"><div class="block" style="flex:1"><span class="eyebrow">Gemensamt för hela sällskapet</span><h1>Listor</h1><p class="lede">Inköpslistor, kom ihåg-listor och packlistor. Det ni skriver här syns för alla som har appen.</p></div><span class="sync" id="sync" data-s="ok"><i></i><span id="syncTxt"></span></span></div>
+        <div class="nlhead"><div class="block" style="flex:1"><span class="eyebrow">Gemensamt för hela sällskapet</span><h1>Listor</h1><p class="lede">Inköpslistor, kom ihåg-listor, packlistor och delade utgifter. Det ni skriver här syns för alla som har appen.</p></div><span class="sync" id="sync" data-s="ok"><i></i><span id="syncTxt"></span></span></div>
         <div id="nlNA" class="nlna" hidden><b>Listorna finns i appen</b><span>Här i förhandsvisningen kan listorna inte sparas. Öppna <a href="https://idrejulen2026.netlify.app/#listor" target="_blank" rel="noopener">idrejulen2026.netlify.app</a> för att skriva i dem.</span></div>
+        <div class="seg" role="tablist" aria-label="Visa"><button type="button" role="tab" data-ltab="listor" aria-selected="true">Listor</button><button type="button" role="tab" data-ltab="utgifter" aria-selected="false">Utgifter</button></div>
+        <div class="exp" id="lExp" hidden></div>
         <div class="nl" id="nl">
           <div class="cards" id="nlCards"></div>
           <div id="nlDetail"></div>
@@ -613,6 +682,16 @@ h3{font-weight:700;font-size:17px}
 <div id="alb" hidden role="dialog" aria-modal="true" aria-label="Bild från albumet">
   <figure><img id="albImg" alt=""></figure>
   <div class="abar"><button type="button" id="albPrev" aria-label="Föregående">←</button><button type="button" id="albNext" aria-label="Nästa">→</button><span id="albCap"></span><i class="sp"></i><button type="button" class="pri" id="albShare">Spara / dela</button><button type="button" class="del" id="albDel" hidden>Ta bort</button><button type="button" id="albClose">Stäng</button></div>
+</div>
+
+<div id="planSheet" hidden role="dialog" aria-modal="true" aria-labelledby="planTitle">
+  <div class="sheet">
+    <div class="wxhead"><div><h2 id="planTitle">Dagens plan</h2><p id="planMeta"></p></div><button type="button" id="planClose">Stäng</button></div>
+    <label for="planTxt" class="eyebrow">Vad händer, var och när?</label>
+    <textarea id="planTxt" maxlength="600" placeholder="Till exempel:&#10;09:15 Samling vid liften&#10;12:30 Lunch&#10;16:00 Afterski"></textarea>
+    <div class="row"><button type="button" class="btn pri" id="planSave">Spara</button><button type="button" class="btn danger" id="planDel">Ta bort planen</button></div>
+    <p class="note" style="margin:0">Planen syns för alla i appen, överst och under Events.</p>
+  </div>
 </div>
 
 <div id="install" hidden role="dialog" aria-modal="true" aria-labelledby="instTitle">
@@ -1126,6 +1205,11 @@ function notesApply(st,op){ // samma regler som servern (netlify/functions/notes
     case 'toggleItem':{const it=item(list(op.list),op.id),d=!!op.done;if(!it||it.done===d)return false;it.done=d;return true;}
     case 'deleteItem':{const l=list(op.list);if(!l)return false;const n=l.items.length;l.items=l.items.filter(x=>x.id!==op.id);return l.items.length!==n;}
     case 'clearDone':{const l=list(op.list);if(!l)return false;const n=l.items.length;l.items=l.items.filter(x=>!x.done);return l.items.length!==n;}
+    case 'addPerson':{const n=clean(op.name,30);st.exp=st.exp||{people:[],items:[]};const P=st.exp.people;if(!n||P.length>=12||P.some(x=>x.toLowerCase()===n.toLowerCase()))return false;P.push(n);return true;}
+    case 'delPerson':{const E=st.exp;if(!E)return false;const i=E.people.indexOf(op.name);if(i<0||E.items.some(x=>x.paid===op.name||x.split.includes(op.name)))return false;E.people.splice(i,1);return true;}
+    case 'addExp':{const E=st.exp;if(!E||typeof op.id!=='string'||!/^[a-z0-9]{6,24}$/i.test(op.id)||E.items.some(x=>x.id===op.id)||E.items.length>=500)return false;const amt=Math.round(Number(op.amt));if(!(amt>0&&amt<=10000000)||!E.people.includes(op.paid))return false;const sp=Array.isArray(op.split)?[...new Set(op.split.filter(n=>E.people.includes(n)))]:[];if(!sp.length)return false;E.items.unshift({id:op.id,what:clean(op.what,60)||'Utlägg',amt,paid:op.paid,split:sp,ts:Date.now(),by:clean(op.by,40)});return true;}
+    case 'delExp':{const E=st.exp;if(!E)return false;const n=E.items.length;E.items=E.items.filter(x=>x.id!==op.id);return E.items.length!==n;}
+    case 'plan':{if(typeof op.d!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(op.d))return false;st.plans=st.plans||{};const tx=String(op.text??'').replace(/\r/g,'').replace(/[\u0000-\u0009\u000b-\u001f\u007f]/g,' ').split('\n').map(l=>l.replace(/\s+/g,' ').trim()).join('\n').replace(/\n{3,}/g,'\n\n').trim().split('\n').slice(0,14).join('\n').slice(0,600);const cur=st.plans[op.d];if(!tx){if(!cur)return false;delete st.plans[op.d];return true;}if(cur&&cur.text===tx)return false;if(!cur&&Object.keys(st.plans).length>=60)return false;st.plans[op.d]={text:tx,by:clean(op.by,40),ts:Date.now()};return true;}
     case 'fav':{if(typeof op.k!=='string'||!op.k||op.k.length>200)return false;st.favs=st.favs||{};if(op.on){if(st.favs[op.k]||Object.keys(st.favs).length>=500)return false;st.favs[op.k]={by:clean(op.by,40),ts:Date.now()};return true;}if(!st.favs[op.k])return false;delete st.favs[op.k];return true;}
   }return false;}
 const NS={server:null,pending:[],open:null,state:'ok',avail:true,editing:null,syncing:false,timer:null,lastOk:null};
@@ -1147,14 +1231,14 @@ async function nsync(){
     const st=await r.json();if(!st||!Array.isArray(st.lists))throw 0;
     NS.server=st;NS.pending.splice(0,batch.length);NS.state='ok';NS.lastOk=new Date();nsave();
   }catch(e){NS.state='offline';}
-  NS.syncing=false;nrender();if(window.__favSync)window.__favSync();
+  NS.syncing=false;nrender();(window.__syncHooks||[]).forEach(f=>{try{f();}catch(e){}});
   if(NS.state==='ok'&&NS.pending.length)nsync();
 }
 function nstatus(){const el=$('#sync');if(!el)return;el.hidden=!NS.avail;el.dataset.s=NS.state;
   $('#syncTxt').textContent=NS.state==='saving'?'Sparar…':NS.state==='offline'?(NS.pending.length?'Ingen kontakt, sparas när du har nät':'Ingen kontakt just nu'):NS.lastOk?'Synkat '+NS.lastOk.toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'}):'Hämtar…';}
 function nrender(){
   if(!inited.listor)return;nstatus();
-  $('#nlNA').hidden=NS.avail;$('#nl').hidden=!NS.avail&&!(NS.server&&NS.server.lists.length);
+  $('#nlNA').hidden=NS.avail;$('#nl').hidden=(!NS.avail&&!(NS.server&&NS.server.lists.length))||!$('#lExp').hidden;
   const st=nview();if(NS.open&&!st.lists.some(l=>l.id===NS.open))NS.open=null;
   const wide=matchMedia('(min-width:900px)').matches;if(wide&&!NS.open&&st.lists[0])NS.open=st.lists[0].id;
   // overview
@@ -1315,7 +1399,7 @@ function renderFavs(){const box=$('#favList');if(!box)return;const L=favList();c
   box.innerHTML=L.length?L.map(g=>`<section class="favday"><h2>${(t=>t.charAt(0).toUpperCase()+t.slice(1))(g.d.toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'long'}))}<small>${g.items.length} ${g.items.length===1?'sak':'saker'}</small></h2><div class="agenda" style="border-top:0">${g.items.map(e=>evRow(e,g.d,true)).join('')}</div></section>`).join('')
    :`<div class="nldet"><div class="empty"><b>Inga favoriter än</b><span>Gå till Alla events och tryck på hjärtat vid det ni tänker göra, till exempel skidskola, middag eller afterski.</span></div></div>`;}
 function favPaint(){const F=favMap();$$('[data-fav]').forEach(x=>{const on=!!F[x.dataset.fav];if(x.getAttribute('aria-pressed')!==String(on)){x.setAttribute('aria-pressed',on);x.setAttribute('aria-label',x.getAttribute('aria-label').replace(/^(Ta bort från|Lägg till i)/,on?'Ta bort från':'Lägg till i'));}});renderFavs();}
-window.__favSync=favPaint;
+(window.__syncHooks=window.__syncHooks||[]).push(favPaint);
 document.addEventListener('click',e=>{const b=e.target.closest('[data-fav]');if(!b)return;const k=b.dataset.fav;const on=!favMap()[k];
   let by='';try{by=localStorage.getItem('idre-name')||'';}catch(x){}
   nop({t:'fav',k,on,by});favPaint();});
@@ -1323,6 +1407,131 @@ function evTab(which){$$('[data-evtab]').forEach(b=>b.setAttribute('aria-selecte
 document.addEventListener('click',e=>{const b=e.target.closest('[data-evtab]');if(b)evTab(b.dataset.evtab);});
 // flytta in tidigare personliga favoriter i den gemensamma listan (en gång)
 try{const old=JSON.parse(localStorage.getItem('idre-favs')||'[]');if(old.length){old.forEach(k=>nop({t:'fav',k,on:true,by:localStorage.getItem('idre-name')||''}));localStorage.removeItem('idre-favs');}}catch(e){}
+/* ================= RESAN DIT: data ================= */
+const CUR='kr';
+const TRAVEL={
+ arrive:'Incheckning söndag 20 december från 16:00. Dörrkoden kommer som sms på ankomstdagen. Adress: Nedre Hjelmbackevägen 17A, 796 98 Idre.',
+ roads:[['Väglag (Trafikverket)','https://www.trafikverket.se/trafikinformation/vag/']],
+ tips:['Ni kommer på en söndag, och då har Systembolaget i Idre stängt. Handla på vägen, eller i Idre måndag–onsdag (onsdag 23 dec öppet till minst 19).',
+   'Sista stora matbutikerna finns i Idre by, ca 7 km innan huset: ICA Idrebua och Coop.',
+   'Det finns inget apotek i Idre. Ta med mediciner.',
+   'Vinterväg hela vägen upp. Kolla väglaget innan ni åker och ha full tank eller laddning.'],
+ book:[
+  {id:'hyra',t:'Skidhyra med leverans till stugan',due:'2026-12-13',note:'Leverans 495 kr. Förbokad hyra är billigare.',url:IF+'/boka/search/1029/'},
+  {id:'julbord',t:'Julbord på julafton',note:'Värdshuset eller Tjôtt. Boka tidigt.',url:IF+'/boka/search/1035/?Mat+Barn=0&Mat+knatte=0&Mat+sm%c3%a5+Barn=0&Mat+ungdom=0&Mat+vuxen=1&endDate=2026-12-25&startDate=2026-12-24'},
+  {id:'tomte',t:'Tomtebesök i stugan',note:'510 kr. Anmäl via formuläret.',url:IF+'/hander-pa-idre-fjall/jul-pa-idre-fjall/'},
+  {id:'skidskola',t:'Skidskolans julkurs',note:'Tider för 2026 är inte publicerade än.',url:IF+'/boka/search/1022'},
+  {id:'fondue',t:'Fonduekväll på Utsikten fre 25 dec',url:'https://restaurangutsikten.superbexperience.com/'},
+  {id:'julkasse',t:'Julkasse från Lilla Vildt',note:'Brukar ta slut.',url:'https://www.lillavildt.se/jul/'}],
+ pack:['Skidor eller snowboard (om ni inte hyr)','Pjäxor','Hjälm','Skidglasögon','Underställ','Mellanlager eller fleece','Skidjacka och skidbyxor','Handskar och extra vantar','Mössa och buff','Solkräm och läppcerat','Mediciner och plåster (inget apotek i Idre)','Laddare och powerbank','Inneskor','Badkläder till bastu och spabad','Julklappar','Spel och kortlek']
+};
+/* ================= GEMENSAMT: namn ================= */
+const myName=()=>{try{return localStorage.getItem('idre-name')||'';}catch(e){return '';}};
+const isoDay=d=>{const x=new Date(d);x.setHours(12,0,0,0);return x.toISOString().slice(0,10);};
+const fmtDay=s=>{const t=new Date(s+'T12:00:00').toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'long'});return t.charAt(0).toUpperCase()+t.slice(1);};
+const fmtWhen=ts=>new Date(ts).toLocaleString('sv-SE',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+
+/* ================= DAGENS PLAN ================= */
+const plans=()=>nview().plans||{};
+let planDate=null;
+function planOpen(d){planDate=d;const p=plans()[d];$('#planTitle').textContent=(d===isoDay(new Date())?'Dagens plan · ':'Plan · ')+fmtDay(d);
+  $('#planMeta').textContent=p?`Senast ändrad av ${p.by||'någon'}, ${fmtWhen(p.ts)}`:'Ingen plan än';
+  $('#planTxt').value=p?p.text:'';$('#planDel').hidden=!p;$('#planSheet').hidden=false;setTimeout(()=>$('#planTxt').focus(),50);}
+function planPaint(){const today=isoDay(new Date());const p=plans()[today];const bar=$('#planBar');bar.hidden=!p;if(p)$('#planBarTxt').textContent=p.text.replace(/\n+/g,' · ');
+  if(window.__planDay)planCard(window.__planDay);}
+function planCard(d){window.__planDay=d;const box=$('#dayPlan');if(!box)return;const p=plans()[d];
+  box.innerHTML=p?`<div class="hd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.5h6l-1 5.5 3 3.5H7l3-3.5z"/><path d="M12 12.5V20.5"/></svg>Plan för dagen<button type="button" class="btn" data-plan="${d}">Ändra</button></div><p>${esc(p.text)}</p><small>${esc(p.by||'Någon')} · ${fmtWhen(p.ts)}</small>`
+    :`<div class="hd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.5h6l-1 5.5 3 3.5H7l3-3.5z"/><path d="M12 12.5V20.5"/></svg>Ingen plan för dagen än<button type="button" class="btn" data-plan="${d}">Skriv en plan</button></div><small>Till exempel samlingstid, var ni äter lunch och vem som lagar middag. Planen syns för alla.</small>`;}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-plan]');if(b)planOpen(b.dataset.plan);});
+$('#planBar').onclick=()=>planOpen(isoDay(new Date()));
+$('#planClose').onclick=()=>$('#planSheet').hidden=true;
+$('#planSheet').addEventListener('click',e=>{if(e.target.id==='planSheet')e.currentTarget.hidden=true;});
+addEventListener('keydown',e=>{if(e.key==='Escape')$('#planSheet').hidden=true;});
+$('#planSave').onclick=()=>{nop({t:'plan',d:planDate,text:$('#planTxt').value,by:myName()});$('#planSheet').hidden=true;planPaint();};
+$('#planDel').onclick=e=>{const b=e.currentTarget;if(b.dataset.arm!=='1'){b.dataset.arm='1';b.textContent='Tryck igen för att ta bort';setTimeout(()=>{b.dataset.arm='';b.textContent='Ta bort planen';},4000);return;}
+  b.dataset.arm='';b.textContent='Ta bort planen';nop({t:'plan',d:planDate,text:''});$('#planSheet').hidden=true;planPaint();};
+(window.__syncHooks=window.__syncHooks||[]).push(planPaint);
+
+/* ================= UTGIFTER ================= */
+const exp=()=>nview().exp||{people:[],items:[]};
+const kr=o=>{const v=o/100;return v.toLocaleString('sv-SE',{minimumFractionDigits:o%100?2:0,maximumFractionDigits:2})+' '+CUR;};
+function settle(E){const bal={};E.people.forEach(p=>bal[p]=0);
+  for(const x of E.items){bal[x.paid]=(bal[x.paid]||0)+x.amt;const n=x.split.length,base=Math.floor(x.amt/n);let rem=x.amt-base*n;x.split.forEach((p,i)=>{bal[p]=(bal[p]||0)-base-(i<rem?1:0);});}
+  const cred=Object.entries(bal).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]).map(([p,v])=>({p,v})),debt=Object.entries(bal).filter(([,v])=>v<0).sort((a,b)=>a[1]-b[1]).map(([p,v])=>({p,v:-v}));
+  const tr=[];let i=0,j=0;while(i<debt.length&&j<cred.length){const m=Math.min(debt[i].v,cred[j].v);if(m>0)tr.push({from:debt[i].p,to:cred[j].p,amt:m});debt[i].v-=m;cred[j].v-=m;if(!debt[i].v)i++;if(!cred[j].v)j++;}
+  return {bal,tr};}
+let expSplit=null,expEditPeople=false;
+function expRender(){const box=$('#lExp');if(!box||box.hidden)return;
+  if(box.contains(document.activeElement)&&document.activeElement.matches('input,select'))return; // stör inte den som skriver
+  const E=exp();const P=E.people;
+  const peopleUI=`<div class="people"><div class="row"><b>Vilka delar?</b>${P.length?`<label class="note" style="margin-left:auto;display:flex;gap:6px;align-items:center">Jag är<select id="meSel" style="width:auto;padding:6px 8px"><option value="">välj</option>${P.map(p=>`<option${p===myName()?' selected':''}>${esc(p)}</option>`).join('')}</select></label>`:''}${P.length>=2?`<button type="button" class="btn" id="expPeopleBtn">${expEditPeople?'Klar':'Ändra'}</button>`:''}</div>
+    <div class="chips">${P.map(p=>`<span class="chip">${esc(p)}${expEditPeople?`<button type="button" data-delp="${esc(p)}" aria-label="Ta bort ${esc(p)}">×</button>`:''}</span>`).join('')||'<span class="muted">Lägg till alla som är med på resan.</span>'}</div>
+    ${P.length<2||expEditPeople?`<form class="row" id="addPersonF"><input id="addPerson" maxlength="30" placeholder="Namn" autocomplete="off" style="flex:1;min-width:140px"><button class="btn pri" type="submit">Lägg till</button></form>`:''}</div>`;
+  if(P.length<2||(expEditPeople&&!E.items.length)){box.innerHTML=`<div class="expform">${peopleUI}</div><p class="note" style="margin:0">Skriv in alla som delar på kostnaderna, minst två. Sedan lägger ni in utläggen, så räknar appen ut vem som ska betala vem.</p>`;return;}
+  const {bal,tr}=settle(E);const total=E.items.reduce((a,x)=>a+x.amt,0);
+  if(!expSplit||expSplit.some(p=>!P.includes(p)))expSplit=[...P];
+  const me=P.includes(myName())?myName():P[0];
+  box.innerHTML=`<div class="expsum"><div><span>Totalt</span><b>${kr(total)}</b></div><div><span>Per person i snitt</span><b>${kr(Math.round(total/P.length))}</b></div><div><span>Utlägg</span><b>${E.items.length}</b></div></div>
+   <div class="settle"><h3>Så gör ni upp</h3>${tr.length?`<ul>${tr.map(t=>`<li><b>${esc(t.from)}</b> betalar <b>${esc(t.to)}</b><b class="amt">${kr(t.amt)}</b></li>`).join('')}</ul>`:`<p style="margin:0" class="muted">${E.items.length?'Ni är kvitt.':'Inga utlägg än.'}</p>`}
+     <div class="bal">${P.map(p=>`<span class="${bal[p]>0?'pos':bal[p]<0?'neg':''}">${esc(p)} ${bal[p]>0?'+':''}${kr(bal[p]||0)}</span>`).join('')}</div>
+     <small class="muted">Plus betyder att personen ska få tillbaka pengar, minus att personen ska betala. Swisha eller Vippsa när resan är slut.</small></div>
+   <form class="expform" id="expF"><b>Nytt utlägg</b>
+     <div class="grid2"><label>Vad<input id="expWhat" maxlength="60" placeholder="Till exempel mat på ICA" autocomplete="off"></label><label>Belopp (${CUR})<input id="expAmt" inputmode="decimal" placeholder="0" autocomplete="off"></label></div>
+     <label>Betalat av<select id="expPaid">${P.map(p=>`<option${p===me?' selected':''}>${esc(p)}</option>`).join('')}</select></label>
+     <div><span class="eyebrow">Delas av</span><div class="kinds" style="margin-top:6px">${P.map(p=>`<button type="button" class="fbtn" data-split="${esc(p)}" aria-pressed="${expSplit.includes(p)}">${esc(p)}</button>`).join('')}</div></div>
+     <div class="row"><button class="btn pri" type="submit">Lägg till utlägg</button><span class="note" id="expErr" style="color:var(--red)"></span></div></form>
+   ${E.items.length?`<ul class="explist">${E.items.map(x=>`<li><div><b>${esc(x.what)}</b><small>${esc(x.paid)} betalade · ${x.split.length===P.length?'delas av alla':'delas av '+x.split.map(esc).join(', ')} · ${fmtWhen(x.ts)}</small></div><span class="amt">${kr(x.amt)}</span><button type="button" class="del" data-delx="${x.id}" aria-label="Ta bort ${esc(x.what)}">×</button></li>`).join('')}</ul>`:''}
+   ${peopleUI}`;
+}
+function ltab(which){$$('[data-ltab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.ltab===which));$('#lExp').hidden=which!=='utgifter';$('#nl').hidden=which!=='listor';if(which==='utgifter')expRender();else nrender();}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-ltab]');if(t){ltab(t.dataset.ltab);return;}
+  const sp=e.target.closest('[data-split]');if(sp){const p=sp.dataset.split;expSplit=expSplit.includes(p)?expSplit.filter(x=>x!==p):[...expSplit,p];sp.setAttribute('aria-pressed',expSplit.includes(p));return;}
+  if(e.target.id==='expPeopleBtn'){expEditPeople=!expEditPeople;expRender();return;}
+  const dp=e.target.closest('[data-delp]');if(dp){const n=dp.dataset.delp;const E=exp();if(E.items.some(x=>x.paid===n||x.split.includes(n))){ntoast(`${n} finns med i utlägg och kan inte tas bort`);return;}nop({t:'delPerson',name:n});expRender();return;}
+  const dx=e.target.closest('[data-delx]');if(dx){if(dx.dataset.arm!=='1'){dx.dataset.arm='1';setTimeout(()=>{if(dx.isConnected)dx.dataset.arm='';},3000);ntoast('Tryck på × igen för att ta bort utlägget');return;}
+    const x=exp().items.find(i=>i.id===dx.dataset.delx);nop({t:'delExp',id:dx.dataset.delx});expRender();if(x)ntoast(`”${x.what}” borttaget`,()=>{nop({t:'addExp',id:nid(),what:x.what,amt:x.amt,paid:x.paid,split:x.split,by:x.by});expRender();});}
+});
+document.addEventListener('change',e=>{if(e.target.id==='meSel'){try{localStorage.setItem('idre-name',e.target.value);}catch(x){}e.target.blur();expRender();}});
+document.addEventListener('submit',e=>{
+  if(e.target.id==='addPersonF'){e.preventDefault();const v=$('#addPerson').value.trim();if(!v)return;expEditPeople=true;const first=!exp().people.length;nop({t:'addPerson',name:v});$('#addPerson').value='';
+    try{if(first&&!localStorage.getItem('idre-name'))localStorage.setItem('idre-name',v);}catch(x){}
+    document.activeElement.blur();expRender();setTimeout(()=>$('#addPerson')?.focus(),30);}
+  if(e.target.id==='expF'){e.preventDefault();const err=$('#expErr');
+    const amt=Math.round(parseFloat($('#expAmt').value.replace(/\s/g,'').replace(',','.'))*100);
+    if(!(amt>0)){err.textContent='Skriv ett belopp.';$('#expAmt').focus();return;}
+    if(!expSplit.length){err.textContent='Välj minst en person som delar.';return;}
+    nop({t:'addExp',id:nid(),what:$('#expWhat').value,amt,paid:$('#expPaid').value,split:expSplit,by:myName()});
+    document.activeElement.blur();expRender();ntoast('Utlägget är tillagt');}
+});
+(window.__syncHooks=window.__syncHooks||[]).push(expRender);
+
+/* ================= RESAN DIT ================= */
+function travelRender(){const box=$('#travel');if(!box)return;
+  const now=new Date(),start=new Date(TRIP.start+'T00:00:00');const daysTo=Math.ceil((start-now)/864e5);
+  const F=nview().favs||{};const pk=nview().lists.find(l=>l.kind==='pack'&&/packlista/i.test(l.title));
+  const left=pk?pk.items.filter(x=>!x.done).length:0;
+  const ck='<svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7"/></svg>';
+  box.innerHTML=`<div class="block"><span class="eyebrow">${daysTo>0?`Avresa om ${daysTo} ${daysTo===1?'dag':'dagar'}`:'Resan'}</span><h2 id="travelH">Resan dit</h2></div>
+  <div class="tgrid">
+   <div class="tcard"><h3>Vägen dit</h3><p>${TRAVEL.arrive}</p>
+     <div class="row"><a class="btn pri" href="https://www.google.com/maps/dir/?api=1&destination=${HOUSE_LL[0]},${HOUSE_LL[1]}" target="_blank" rel="noopener">Vägbeskrivning ↗</a>${TRAVEL.roads.map(([l,u])=>`<a class="btn" href="${u}" target="_blank" rel="noopener">${l} ↗</a>`).join('')}</div>
+     <ul>${TRAVEL.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+   <div class="tcard"><h3>Boka innan</h3><ul class="booklist">${TRAVEL.book.map(b=>{const f=F['boka|'+b.id];const dl=b.due?Math.ceil((new Date(b.due+'T23:59:59')-now)/864e5):null;
+      return `<li class="${f?'done':''}"><button type="button" class="chk" data-fav="boka|${b.id}" aria-pressed="${!!f}" aria-label="${f?'Markera som inte bokat':'Markera som bokat'}: ${esc(b.t)}">${ck}</button><div><b>${b.url?`<a href="${b.url}" target="_blank" rel="noopener">${b.t} ↗</a>`:b.t}</b><small>${b.due?`<span class="due">Senast ${new Date(b.due+'T12:00:00').toLocaleDateString('sv-SE',{day:'numeric',month:'short'})}${dl>=0?` · ${dl} ${dl===1?'dag':'dagar'} kvar`:''}</span> · `:''}${b.note||''}${f?` · Bokat${f.by?' av '+esc(f.by):''}`:''}</small></div></li>`;}).join('')}</ul></div>
+   <div class="tcard"><h3>Packlista</h3><p>${pk?`Den gemensamma packlistan har ${left} ${left===1?'sak':'saker'} kvar att packa.`:'Skapa en gemensam packlista med förslag på allt som brukar behövas. Ni kan sedan lägga till och bocka av under Listor.'}</p>
+     <div class="row"><button type="button" class="btn pri" id="packBtn">${pk?'Öppna packlistan':'Skapa packlista'}</button></div></div>
+  </div>`;
+}
+document.addEventListener('click',e=>{if(e.target.id!=='packBtn')return;const st=nview();let pk=st.lists.find(l=>l.kind==='pack'&&/packlista/i.test(l.title));
+  if(!pk){const id=nid();nop({t:'addList',id,title:'Packlista',kind:'pack'});TRAVEL.pack.forEach(t=>nop({t:'addItem',list:id,id:nid(),text:t}));NS.open=id;}else NS.open=pk.id;
+  if($('#nlDetail'))$('#nlDetail').dataset.id='';location.hash='listor';setTimeout(()=>{if(window.ltab)ltab('listor');},50);});
+window.ltab=ltab;
+(window.__syncHooks=window.__syncHooks||[]).push(()=>{travelRender();if(!$('#v-events').hidden&&window.__evRender)window.__evRender();});
+// booking checks reuse fav keys: repaint travel on click
+document.addEventListener('click',e=>{if(e.target.closest('[data-fav^="boka|"]'))setTimeout(travelRender,0);});
+travelRender();planPaint();
+
 /* ================= EVENTS ================= */
 function initEvents(){
   const d0=new Date(TRIP.start+'T12:00:00');const days=[];for(let i=0;i<8;i++){const d=new Date(d0);d.setDate(d.getDate()+i);days.push(d);}
@@ -1336,6 +1545,7 @@ function initEvents(){
   const CATSV={lift:'Liftar',skiskola:'Skidskola',afterski:'Afterski',event:'Händelse',mat:'Mat'};
   const applies=(e,d)=>{const s=iso(d);if(e.dates)return e.dates.includes(s);if(e.from&&s<e.from)return false;if(e.to&&s>e.to)return false;return !e.days||e.days.includes(d.getDay());};
   function render(){
+    if(window.planCard)planCard(iso(days[sel]));
     const d=days[sel];const sun=sunTimes(d,HOUSE_LL[0],HOUSE_LL[1]);
     $('#daysum').innerHTML=`<h2 style="margin-right:6px">${d.toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'long'})}</h2><span class="chip">Soluppgång ${sun.rise}</span><span class="chip">Solnedgång ${sun.set}</span><span class="chip">${sun.len} dagsljus</span>`;
     const list=EVENTS.filter(e=>applies(e,d)&&(cat==='alla'||e.cat===cat)).sort((a,b)=>(a.t||'').localeCompare(b.t||''));
