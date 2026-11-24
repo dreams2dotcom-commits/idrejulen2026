@@ -301,6 +301,61 @@ h3{font-weight:700;font-size:17px}
 .wxlinks{display:flex;flex-wrap:wrap;gap:8px}
 .wxlinks a{border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-weight:700;font-size:13px;text-decoration:none;color:var(--ink);background:var(--wash)}
 .wxlinks a.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+
+/* listor */
+.nl{display:grid;gap:18px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.nl{grid-template-columns:300px minmax(0,1fr);align-items:start}}
+.nlhead{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.sync{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);font-weight:600;white-space:nowrap}
+.sync i{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.sync[data-s="saving"] i{background:var(--accent)}
+.sync[data-s="offline"] i{background:var(--warn)}
+.cards{display:grid;gap:10px;align-content:start}
+@media (max-width:899px){.cards{grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}}
+.lcard{display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 12px;align-items:start;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px 14px;cursor:pointer;color:var(--ink);width:100%}
+.lcard:hover{border-color:var(--muted)}
+.lcard[aria-current="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-wash)}
+.lcard .ki{grid-row:span 2;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--wash);color:var(--fjord)}
+.lcard .ki svg,.nldet .ki svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lcard[data-k="inkop"] .ki,.nldet[data-k="inkop"] .ki{background:var(--accent-wash);color:var(--accent-strong)}
+.lcard b{font-family:var(--f-display);font-size:17px;font-weight:700;line-height:1.2;overflow-wrap:anywhere}
+.lcard small{color:var(--muted);font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.newl{border:1.5px dashed var(--line);border-radius:16px;padding:12px 14px;display:grid;gap:10px;background:transparent}
+.newl input,.addit input,.nltitle{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;box-sizing:border-box;min-width:0}
+.newl input:focus,.addit input:focus,.nltitle:focus,.itx input:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+.kinds{display:flex;flex-wrap:wrap;gap:6px}
+.nldet{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;gap:14px;min-width:0}
+.nldet .top2{display:flex;align-items:center;gap:10px}
+.nldet .ki{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--wash);color:var(--fjord);flex:none}
+.nltitle{font-family:var(--f-display);font-size:21px;font-weight:700;border-color:transparent;background:transparent;padding:6px 8px}
+.nltitle:hover{border-color:var(--line)}
+.back{border:0;background:none;color:var(--fjord);font-weight:800;cursor:pointer;padding:4px 0;justify-self:start}
+@media (min-width:900px){.back{display:none}}
+.addit{display:flex;gap:8px}
+.addit button{flex:none}
+.items{list-style:none;margin:0;padding:0;display:grid}
+.items li{display:grid;grid-template-columns:34px minmax(0,1fr) 34px;align-items:center;gap:6px;border-bottom:1px solid var(--line);min-height:46px}
+.items li:last-child{border-bottom:0}
+.chk{width:26px;height:26px;border-radius:50%;border:2px solid var(--muted);background:transparent;cursor:pointer;display:grid;place-items:center;padding:0;justify-self:center}
+.chk svg{width:15px;height:15px;stroke:var(--accent-ink);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+.items li.done .chk{background:var(--accent);border-color:var(--accent)}
+.items li.done .chk svg{opacity:1}
+.itx{min-width:0;padding:8px 2px;cursor:text;overflow-wrap:anywhere;font-size:15.5px}
+.items li.done .itx{color:var(--muted);text-decoration:line-through}
+.itx input{font:inherit;width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:8px;padding:6px 8px;background:var(--snow);color:var(--ink)}
+.del{width:34px;height:34px;border:0;background:none;color:var(--muted);cursor:pointer;border-radius:8px;font-size:20px;line-height:1}
+.del:hover{background:var(--wash);color:var(--ink)}
+.donehd{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:12px 0 4px;display:flex;align-items:center;gap:10px}
+.donehd button{margin-left:auto;font-size:12.5px;letter-spacing:0;text-transform:none}
+.nlfoot{display:flex;gap:8px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line);padding-top:12px}
+.btn.danger{color:var(--red)}
+.btn.danger[data-arm="1"]{background:var(--red);border-color:var(--red);color:#fff}
+.empty{color:var(--muted);text-align:center;padding:26px 10px;display:grid;gap:6px;justify-items:center}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--snow);border-radius:12px;padding:10px 14px;display:flex;gap:14px;align-items:center;z-index:80;font-size:14px;box-shadow:var(--shadow);max-width:calc(100% - 32px)}
+.toast button{background:none;border:0;color:var(--accent);font-weight:800;cursor:pointer}
+@media (min-width:1180px){.toast{bottom:24px}}
+.nlna{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:8px}
+@media (min-width:1180px) and (max-width:1420px){.count{display:none}.inst{margin-left:auto}}
 /* install sheet */
 #install{position:fixed;inset:0;z-index:90;background:#05080d99;display:grid;align-items:end;justify-items:center}
 #install .sheet{box-sizing:border-box;background:var(--paper);color:var(--ink);width:min(560px,100%);border-radius:16px 16px 0 0;padding:20px max(20px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:grid;gap:14px;max-height:90%;overflow:auto}
@@ -438,6 +493,17 @@ h3{font-weight:700;font-size:17px}
         <p class="note" id="evSrc"></p>
       </div>
     </section>
+    <section class="view" id="v-listor" data-view="listor" aria-label="Listor" hidden>
+      <div class="wrap">
+        <div class="nlhead"><div class="block" style="flex:1"><span class="eyebrow">Gemensamt för hela sällskapet</span><h1>Listor</h1><p class="lede">Inköpslistor, kom ihåg-listor och packlistor. Det ni skriver här syns för alla som har appen.</p></div><span class="sync" id="sync" data-s="ok"><i></i><span id="syncTxt"></span></span></div>
+        <div id="nlNA" class="nlna" hidden><b>Listorna finns i appen</b><span>Här i förhandsvisningen kan listorna inte sparas. Öppna <a href="https://idrejulen2026.netlify.app/#listor" target="_blank" rel="noopener">idrejulen2026.netlify.app</a> för att skriva i dem.</span></div>
+        <div class="nl" id="nl">
+          <div class="cards" id="nlCards"></div>
+          <div id="nlDetail"></div>
+        </div>
+        <p class="note" style="margin:0">Alla som har länken till appen kan se och ändra listorna. Ändringar från andra dyker upp inom några sekunder.</p>
+      </div>
+    </section>
   </main>
 
   <nav class="tabs" role="tablist" aria-label="Sektioner">
@@ -446,6 +512,7 @@ h3{font-weight:700;font-size:17px}
     <button class="tab" role="tab" data-go="3d" aria-selected="false"><svg viewBox="0 0 24 24"><path d="m2.5 19 6.5-11 4 6 3-4 5.5 9z"/><path d="m7.2 10.3 1.8 1.2 1.6-1.1"/></svg>3D</button>
     <button class="tab" role="tab" data-go="mat" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10"/><path d="M17 21V3c-2.2 1.3-3.3 3.8-3.3 7.2V13H17"/></svg>Mat</button>
     <button class="tab" role="tab" data-go="events" aria-selected="false"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h3"/></svg>Events</button>
+    <button class="tab" role="tab" data-go="listor" aria-selected="false"><svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17.5" rx="2.5"/><path d="m7.5 9 1.5 1.5 2.5-3M13.5 9H17M7.5 15l1.5 1.5 2.5-3M13.5 15H17"/></svg>Listor</button>
   </nav>
 </div>
 
@@ -622,14 +689,15 @@ const SOURCES={mat:'Källor: idrefjall.se (Mat & nöje), restaurangernas egna si
 <script>
 /* ================= APP SHELL ================= */
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const VIEWS=['huset','pistkarta','3d','mat','events'];
+const VIEWS=['huset','pistkarta','3d','mat','events','listor'];
 let dataPromise=null; const getData=()=>dataPromise||(dataPromise=fetch('data.json').then(r=>r.json()));
 const inited={};
 function show(v){
   if(!VIEWS.includes(v))v='huset';
   $$('.view').forEach(s=>s.hidden=s.dataset.view!==v);
   $$('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.go===v));
-  if(!inited[v]){inited[v]=true;({pistkarta:initPistmap,'3d':init3D,mat:initMat,events:initEvents})[v]?.();}
+  if(!inited[v]){inited[v]=true;({pistkarta:initPistmap,'3d':init3D,mat:initMat,events:initEvents,listor:initNotes})[v]?.();}
+  window.dispatchEvent(new CustomEvent('viewchange',{detail:v}));
   window.dispatchEvent(new Event('resize'));
 }
 $$('.tab').forEach(t=>t.addEventListener('click',()=>{if(location.hash!=='#'+t.dataset.go)location.hash=t.dataset.go;else show(t.dataset.go);}));
@@ -960,6 +1028,115 @@ function initMat(){
   $('#matLede').textContent=MAT_LEDE;$('#matSrc').innerHTML=SOURCES.mat;
 }
 function GEO_dist(a,b){const C=Math.cos(61.45*Math.PI/180);return Math.hypot((a[0]-b[0])*111320,(a[1]-b[1])*111320*C);}
+
+
+/* ================= LISTOR ================= */
+const NOTES_API='/api/notes';
+const NK={inkop:['Inköp','<path d="M3.5 4.5h2.2l2 10.5h10.6l1.9-7.5H7"/><circle cx="9.5" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/>'],
+  komihag:['Kom ihåg','<path d="M12 3.5a5.5 5.5 0 0 0-5.5 5.5c0 2 .8 3.2 2 4.4.7.7 1 1.5 1 2.4v.7h5v-.7c0-.9.3-1.7 1-2.4 1.2-1.2 2-2.4 2-4.4A5.5 5.5 0 0 0 12 3.5z"/><path d="M9.8 19.5h4.4M10.5 21.5h3"/>'],
+  pack:['Packlista','<rect x="4" y="7" width="16" height="13" rx="2.5"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M4 12.5h16"/>'],
+  annat:['Annat','<path d="M7 4h7.5L19 8.5V20H7z"/><path d="M14.5 4v4.5H19M10 12.5h6M10 16h4"/>']};
+const kicon=k=>`<svg viewBox="0 0 24 24">${(NK[k]||NK.annat)[1]}</svg>`;
+function notesApply(st,op){ // samma regler som servern (netlify/functions/notes.mjs)
+  if(!op||typeof op!=='object')return false;
+  const clean=(s,n)=>String(s??'').replace(/[\u0000-\u001f\u007f]/g,' ').replace(/\s+/g,' ').trim().slice(0,n);
+  const L=st.lists,list=id=>L.find(l=>l.id===id),item=(l,id)=>l&&l.items.find(x=>x.id===id);
+  switch(op.t){
+    case 'addList':{if(list(op.id)||L.length>=40)return false;L.unshift({id:op.id,title:clean(op.title,60)||'Ny lista',kind:NK[op.kind]?op.kind:'annat',items:[]});return true;}
+    case 'renameList':{const l=list(op.id),t=clean(op.title,60);if(!l||!t||t===l.title)return false;l.title=t;return true;}
+    case 'deleteList':{const i=L.findIndex(l=>l.id===op.id);if(i<0)return false;L.splice(i,1);return true;}
+    case 'addItem':{const l=list(op.list),tx=clean(op.text,300);if(!l||!tx||item(l,op.id)||l.items.length>=400)return false;l.items.push({id:op.id,text:tx,done:false});return true;}
+    case 'editItem':{const it=item(list(op.list),op.id),tx=clean(op.text,300);if(!it||!tx||it.text===tx)return false;it.text=tx;return true;}
+    case 'toggleItem':{const it=item(list(op.list),op.id),d=!!op.done;if(!it||it.done===d)return false;it.done=d;return true;}
+    case 'deleteItem':{const l=list(op.list);if(!l)return false;const n=l.items.length;l.items=l.items.filter(x=>x.id!==op.id);return l.items.length!==n;}
+    case 'clearDone':{const l=list(op.list);if(!l)return false;const n=l.items.length;l.items=l.items.filter(x=>!x.done);return l.items.length!==n;}
+  }return false;}
+const NS={server:null,pending:[],open:null,state:'ok',avail:true,editing:null,syncing:false,timer:null,lastOk:null};
+try{NS.server=JSON.parse(localStorage.getItem('idre-notes-cache')||'null');NS.pending=JSON.parse(localStorage.getItem('idre-notes-pending')||'[]');}catch(e){}
+const nid=()=>Math.random().toString(36).slice(2,8)+Date.now().toString(36).slice(-4);
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function nview(){const st=JSON.parse(JSON.stringify(NS.server||{lists:[]}));for(const op of NS.pending)notesApply(st,op);return st;}
+function nsave(){try{localStorage.setItem('idre-notes-cache',JSON.stringify(NS.server));localStorage.setItem('idre-notes-pending',JSON.stringify(NS.pending));}catch(e){}}
+function nop(op){NS.pending.push(op);nsave();nrender();clearTimeout(NS.debounce);NS.debounce=setTimeout(nsync,250);}
+async function nsync(){
+  if(NS.syncing||!NS.avail)return;NS.syncing=true;
+  if(NS.pending.length){NS.state='saving';nstatus();}
+  try{
+    let r;const batch=NS.pending.slice();
+    if(batch.length)r=await fetch(NOTES_API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({ops:batch})});
+    else r=await fetch(NOTES_API,{cache:'no-store'});
+    if(r.status===404||!(r.headers.get('content-type')||'').includes('json')){NS.avail=false;throw 0;}
+    if(!r.ok)throw 0;
+    const st=await r.json();if(!st||!Array.isArray(st.lists))throw 0;
+    NS.server=st;NS.pending.splice(0,batch.length);NS.state='ok';NS.lastOk=new Date();nsave();
+  }catch(e){NS.state='offline';}
+  NS.syncing=false;nrender();
+  if(NS.state==='ok'&&NS.pending.length)nsync();
+}
+function nstatus(){const el=$('#sync');if(!el)return;el.hidden=!NS.avail;el.dataset.s=NS.state;
+  $('#syncTxt').textContent=NS.state==='saving'?'Sparar…':NS.state==='offline'?(NS.pending.length?'Ingen kontakt, sparas när du har nät':'Ingen kontakt just nu'):NS.lastOk?'Synkat '+NS.lastOk.toLocaleTimeString('sv-SE',{hour:'2-digit',minute:'2-digit'}):'Hämtar…';}
+function nrender(){
+  if(!inited.listor)return;nstatus();
+  $('#nlNA').hidden=NS.avail;$('#nl').hidden=!NS.avail&&!(NS.server&&NS.server.lists.length);
+  const st=nview();if(NS.open&&!st.lists.some(l=>l.id===NS.open))NS.open=null;
+  const wide=matchMedia('(min-width:900px)').matches;if(wide&&!NS.open&&st.lists[0])NS.open=st.lists[0].id;
+  // overview
+  const cards=$('#nlCards');cards.hidden=!wide&&!!NS.open;
+  if(!cards.hidden&&!cards.contains(document.activeElement)){
+    cards.innerHTML=st.lists.map(l=>{const left=l.items.filter(x=>!x.done);const prev=left.slice(0,3).map(x=>x.text).join(', ');
+      return `<button type="button" class="lcard" data-k="${l.kind}" data-open="${l.id}" aria-current="${l.id===NS.open}"><span class="ki">${kicon(l.kind)}</span><b>${esc(l.title)}</b><small>${l.items.length?`${left.length} kvar av ${l.items.length}${prev?' · '+esc(prev):''}`:'Tom lista'}</small></button>`;}).join('')+
+      `<form class="newl" id="newl"><label class="eyebrow" for="newTitle">Ny lista</label><input id="newTitle" maxlength="60" placeholder="Till exempel Inköp julafton" autocomplete="off"><div class="kinds" id="newKinds">${Object.entries(NK).map(([k,[n]],i)=>`<button type="button" class="fbtn" data-kind="${k}" aria-pressed="${i===0}">${n}</button>`).join('')}</div><button class="btn pri" type="submit" style="justify-self:start">Skapa lista</button></form>`;
+  }
+  // detail
+  const det=$('#nlDetail');const l=st.lists.find(x=>x.id===NS.open);
+  if(!l){det.innerHTML=wide?`<div class="nldet"><div class="empty"><b>Inga listor än</b><span>Skapa den första till vänster, till exempel en inköpslista till julafton.</span></div></div>`:'';det.dataset.id='';return;}
+  if(det.dataset.id!==l.id){det.dataset.id=l.id;
+    det.innerHTML=`<div class="nldet" data-k="${l.kind}"><button type="button" class="back" id="nlBack">‹ Alla listor</button><div class="top2"><span class="ki">${kicon(l.kind)}</span><input class="nltitle" id="nlTitle" maxlength="60" aria-label="Listans namn"></div>
+      <form class="addit" id="addit"><input id="addTxt" maxlength="300" placeholder="Lägg till…" autocomplete="off" enterkeyhint="done" aria-label="Ny rad"><button class="btn pri" type="submit">Lägg till</button></form>
+      <div id="nlItems"></div><div class="nlfoot"><button type="button" class="btn danger" id="nlDel">Ta bort listan</button></div></div>`;}
+  const ti=$('#nlTitle');if(document.activeElement!==ti)ti.value=l.title;
+  if(NS.editing)return; // rör inte raden någon skriver i
+  const open=l.items.filter(x=>!x.done),done=l.items.filter(x=>x.done);
+  const row=x=>`<li class="${x.done?'done':''}" data-id="${x.id}"><button type="button" class="chk" data-chk aria-label="${x.done?'Bocka ur':'Bocka av'} ${esc(x.text)}" aria-pressed="${x.done}"><svg viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7"/></svg></button><div class="itx" data-edit>${esc(x.text)}</div><button type="button" class="del" data-del aria-label="Ta bort ${esc(x.text)}">×</button></li>`;
+  $('#nlItems').innerHTML=(open.length?`<ul class="items">${open.map(row).join('')}</ul>`:(done.length?'':`<div class="empty"><span>Listan är tom. Skriv något ovan.</span></div>`))+
+    (done.length?`<div class="donehd">Avbockat (${done.length})<button type="button" class="btn" id="nlClear">Rensa avbockade</button></div><ul class="items">${done.map(row).join('')}</ul>`:'');
+}
+function ntoast(msg,undo){let t=$('#toast');if(!t){t=document.createElement('div');t.id='toast';t.className='toast';t.setAttribute('role','status');document.body.appendChild(t);}
+  t.innerHTML=`<span>${esc(msg)}</span>${undo?'<button type="button">Ångra</button>':''}`;t.hidden=false;if(undo)t.querySelector('button').onclick=()=>{undo();t.hidden=true;};
+  clearTimeout(t._h);t._h=setTimeout(()=>t.hidden=true,5000);}
+function initNotes(){
+  let kind='inkop';
+  const root=$('#v-listor');
+  root.addEventListener('click',e=>{
+    const k=e.target.closest('[data-kind]');if(k){kind=k.dataset.kind;$$('#newKinds [data-kind]').forEach(b=>b.setAttribute('aria-pressed',b===k));return;}
+    const o=e.target.closest('[data-open]');if(o){NS.open=o.dataset.open;$('#nlDetail').dataset.id='';nrender();root.scrollTop=0;return;}
+    if(e.target.id==='nlBack'){NS.open=null;$('#nlDetail').dataset.id='';$('#nlDetail').innerHTML='';nrender();return;}
+    const li=e.target.closest('.items li');const lid=NS.open;
+    if(li&&e.target.closest('[data-chk]')){const st=nview(),it=st.lists.find(x=>x.id===lid)?.items.find(x=>x.id===li.dataset.id);if(it)nop({t:'toggleItem',list:lid,id:it.id,done:!it.done});return;}
+    if(li&&e.target.closest('[data-del]')){const st=nview(),it=st.lists.find(x=>x.id===lid)?.items.find(x=>x.id===li.dataset.id);if(!it)return;nop({t:'deleteItem',list:lid,id:it.id});ntoast(`”${it.text}” borttagen`,()=>nop({t:'addItem',list:lid,id:nid(),text:it.text}));return;}
+    if(li&&e.target.closest('[data-edit]')&&!e.target.closest('input')){const box=e.target.closest('[data-edit]');const st=nview(),it=st.lists.find(x=>x.id===lid)?.items.find(x=>x.id===li.dataset.id);if(!it)return;
+      NS.editing=it.id;box.innerHTML=`<input maxlength="300" aria-label="Ändra rad">`;const inp=box.querySelector('input');inp.value=it.text;inp.focus();
+      const done=save=>{if(NS.editing!==it.id)return;NS.editing=null;const v=inp.value.trim();if(save&&v&&v!==it.text)nop({t:'editItem',list:lid,id:it.id,text:v});else nrender();};
+      inp.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();done(true);}if(ev.key==='Escape')done(false);});inp.addEventListener('blur',()=>done(true));return;}
+    if(e.target.id==='nlClear'){const st=nview(),l=st.lists.find(x=>x.id===lid);const gone=(l?.items||[]).filter(x=>x.done);nop({t:'clearDone',list:lid});ntoast(`${gone.length} avbockade rensade`,()=>gone.forEach(x=>nop({t:'addItem',list:lid,id:nid(),text:x.text})));return;}
+    if(e.target.id==='nlDel'){const b=e.target;if(b.dataset.arm!=='1'){b.dataset.arm='1';b.textContent='Tryck igen för att ta bort';setTimeout(()=>{if(b.isConnected){b.dataset.arm='';b.textContent='Ta bort listan';}},4000);return;}
+      const st=nview(),l=st.lists.find(x=>x.id===lid);nop({t:'deleteList',id:lid});NS.open=null;$('#nlDetail').dataset.id='';$('#nlDetail').innerHTML='';nrender();
+      if(l)ntoast(`Listan ”${l.title}” togs bort`,()=>{const id=nid();nop({t:'addList',id,title:l.title,kind:l.kind});l.items.forEach(x=>{nop({t:'addItem',list:id,id:nid(),text:x.text});});});return;}
+  });
+  root.addEventListener('submit',e=>{e.preventDefault();
+    if(e.target.id==='newl'){const t=$('#newTitle').value.trim()||NK[kind][0];const id=nid();nop({t:'addList',id,title:t,kind});NS.open=id;$('#newTitle').value='';$('#nlDetail').dataset.id='';nrender();setTimeout(()=>$('#addTxt')?.focus(),50);}
+    if(e.target.id==='addit'){const inp=$('#addTxt');const v=inp.value.trim();if(!v||!NS.open)return;nop({t:'addItem',list:NS.open,id:nid(),text:v});inp.value='';inp.focus();}
+  });
+  root.addEventListener('change',e=>{if(e.target.id==='nlTitle'&&NS.open)nop({t:'renameList',id:NS.open,title:e.target.value});});
+  root.addEventListener('keydown',e=>{if(e.target.id==='nlTitle'&&e.key==='Enter')e.target.blur();});
+  addEventListener('resize',()=>{clearTimeout(NS.rz);NS.rz=setTimeout(()=>{$('#nlDetail').dataset.id='';nrender();},200);});
+  nrender();nsync();
+}
+// hämta nytt: ofta när Listor är öppen, annars bara när appen kommer tillbaka i fokus
+function npoll(){clearInterval(NS.timer);if(!inited.listor||!NS.avail)return;const onList=!$('#v-listor').hidden;NS.timer=setInterval(()=>{if(!document.hidden)nsync();},onList?8000:60000);}
+addEventListener('viewchange',e=>{if(e.detail==='listor'&&inited.listor)nsync();npoll();});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&inited.listor)nsync();});
+addEventListener('online',()=>{if(inited.listor)nsync();});
 
 /* ================= EVENTS ================= */
 function initEvents(){
