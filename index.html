@@ -79,7 +79,7 @@ a{color:var(--fjord)}
 .tab{flex:1;min-width:0;display:grid;justify-items:center;gap:6px;padding:14px 1px 10px;border:0;background:none;cursor:pointer;color:var(--muted);font-size:11.5px;font-weight:600;letter-spacing:.01em}
 .tab svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .tab[aria-selected="true"]{color:var(--accent-strong)}
-@media (min-width:1180px){
+@media (min-width:1400px){
   #app{grid-template-rows:auto auto 1fr}
   .tabs{grid-row:1;position:absolute;top:0;left:50%;transform:translateX(-50%);background:transparent;border:0;padding:6px 0;gap:4px;z-index:25}
   .tab{flex:none;grid-auto-flow:column;gap:6px;padding:8px 10px;border-radius:8px;color:var(--hdr-muted);font-size:13px}
@@ -354,9 +354,9 @@ h3{font-weight:700;font-size:17px}
 .empty{color:var(--muted);text-align:center;padding:26px 10px;display:grid;gap:6px;justify-items:center}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--snow);border-radius:12px;padding:10px 14px;display:flex;gap:14px;align-items:center;z-index:80;font-size:14px;box-shadow:var(--shadow);max-width:calc(100% - 32px)}
 .toast button{background:none;border:0;color:var(--accent);font-weight:800;cursor:pointer}
-@media (min-width:1180px){.toast{bottom:24px}}
+@media (min-width:1400px){.toast{bottom:24px}}
 .nlna{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:8px}
-@media (min-width:1180px) and (max-width:1420px){.count{display:none}.inst{margin-left:auto}}
+@media (min-width:1400px) and (max-width:1640px){.count{display:none}.inst{margin-left:auto}}
 
 /* bilder */
 .phtop{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px}
@@ -387,6 +387,22 @@ h3{font-weight:700;font-size:17px}
 #alb .abar button,#alb .abar a{white-space:nowrap;background:#ffffff1f;border:0;color:#fff;border-radius:8px;padding:8px 12px;cursor:pointer;font-weight:700;font-size:13.5px;text-decoration:none}
 #alb .abar .pri{background:var(--accent);color:var(--accent-ink)}
 #alb .abar .del[data-arm="1"]{background:#cf3a4f}
+
+/* favoriter */
+.ev{grid-template-columns:96px minmax(0,1fr) 44px}
+@media (max-width:520px){.ev{grid-template-columns:78px minmax(0,1fr) 44px}}
+.fav{width:44px;height:44px;border:0;background:none;border-radius:50%;cursor:pointer;display:grid;place-items:center;color:var(--muted);align-self:start;margin-top:-6px}
+.fav:hover{background:var(--wash);color:var(--accent)}
+.fav svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linejoin:round;transition:transform .15s}
+.fav[aria-pressed="true"]{color:var(--accent)}
+.fav[aria-pressed="true"] svg{fill:currentColor;transform:scale(1.08)}
+.fav:active svg{transform:scale(.85)}
+.favday{display:grid;gap:0}
+.favday h2{font-size:19px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.favday h2 small{font-family:var(--f-body);font-size:13px;font-weight:600;color:var(--muted);margin-left:6px}
+.favcount{display:inline-grid;place-items:center;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--accent);color:var(--accent-ink);font-size:10.5px;font-weight:800;position:absolute;transform:translate(13px,-6px)}
+.tab{position:relative}
+@media (max-width:420px){.tab{font-size:10px}}
 /* install sheet */
 #install{position:fixed;inset:0;z-index:90;background:#05080d99;display:grid;align-items:end;justify-items:center}
 #install .sheet{box-sizing:border-box;background:var(--paper);color:var(--ink);width:min(560px,100%);border-radius:16px 16px 0 0;padding:20px max(20px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:grid;gap:14px;max-height:90%;overflow:auto}
@@ -549,6 +565,12 @@ h3{font-weight:700;font-size:17px}
         <p class="note" style="margin:0">Bilderna förminskas innan de laddas upp, så det går snabbt även på mobilnät. Alla med länken till appen kan se albumet. Bara den som laddat upp en bild kan ta bort den, från samma mobil.</p>
       </div>
     </section>
+    <section class="view" id="v-mina" data-view="mina" aria-label="Mina favoriter" hidden>
+      <div class="wrap">
+        <div class="block"><span class="eyebrow">Ditt eget schema</span><h1>Mina favoriter</h1><p class="lede">Tryck på hjärtat vid en händelse under Events så hamnar den här, sorterad per dag. Favoriterna sparas i din egen mobil.</p></div>
+        <div id="favList" style="display:grid;gap:22px"></div>
+      </div>
+    </section>
   </main>
 
   <nav class="tabs" role="tablist" aria-label="Sektioner">
@@ -559,6 +581,7 @@ h3{font-weight:700;font-size:17px}
     <button class="tab" role="tab" data-go="events" aria-selected="false"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h3"/></svg>Events</button>
     <button class="tab" role="tab" data-go="listor" aria-selected="false"><svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17.5" rx="2.5"/><path d="m7.5 9 1.5 1.5 2.5-3M13.5 9H17M7.5 15l1.5 1.5 2.5-3M13.5 15H17"/></svg>Listor</button>
     <button class="tab" role="tab" data-go="bilder" aria-selected="false"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2.5"/><circle cx="9" cy="10.5" r="1.8"/><path d="m21 16-5-5-8.5 9"/></svg>Bilder</button>
+    <button class="tab" role="tab" data-go="mina" aria-selected="false" aria-label="Mina favoriter"><svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg><span class="favcount" id="favCount" hidden></span>Mina</button>
   </nav>
 </div>
 
@@ -740,14 +763,14 @@ const SOURCES={mat:'Källor: idrefjall.se (Mat & nöje), restaurangernas egna si
 <script>
 /* ================= APP SHELL ================= */
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const VIEWS=['huset','pistkarta','3d','mat','events','listor','bilder'];
+const VIEWS=['huset','pistkarta','3d','mat','events','listor','bilder','mina'];
 let dataPromise=null; const getData=()=>dataPromise||(dataPromise=fetch('data.json').then(r=>r.json()));
 const inited={};
 function show(v){
   if(!VIEWS.includes(v))v='huset';
   $$('.view').forEach(s=>s.hidden=s.dataset.view!==v);
   $$('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.go===v));
-  if(!inited[v]){inited[v]=true;({pistkarta:initPistmap,'3d':init3D,mat:initMat,events:initEvents,listor:initNotes,bilder:initPhotos})[v]?.();}
+  if(!inited[v]){inited[v]=true;({pistkarta:initPistmap,'3d':init3D,mat:initMat,events:initEvents,listor:initNotes,bilder:initPhotos,mina:renderFavs})[v]?.();}
   window.dispatchEvent(new CustomEvent('viewchange',{detail:v}));
   window.dispatchEvent(new Event('resize'));
 }
@@ -1272,6 +1295,27 @@ function initPhotos(){
 addEventListener('viewchange',e=>{clearInterval(PH.timer);if(e.detail==='bilder'&&inited.bilder){phLoad();PH.timer=setInterval(()=>{if(!document.hidden)phLoad();},20000);}});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&inited.bilder&&!$('#v-bilder').hidden)phLoad();});
 
+/* ================= FAVORITER ================= */
+const FAV_KEY='idre-favs';
+let FAVS=new Set();try{FAVS=new Set(JSON.parse(localStorage.getItem(FAV_KEY)||'[]'));}catch(e){}
+const favKey=(e,s)=>s+'|'+e.title+'|'+(e.t||'');
+const HEART_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>';
+const EV_CATS={lift:'Liftar',skiskola:'Skidskola',afterski:'Afterski',event:'Händelse',mat:'Mat'};
+const evApplies=(e,d)=>{const s=d.toISOString().slice(0,10);if(e.dates)return e.dates.includes(s);if(e.from&&s<e.from)return false;if(e.to&&s>e.to)return false;return !e.days||e.days.includes(d.getDay());};
+function tripDays(){const d0=new Date(TRIP.start+'T12:00:00'),d1=new Date(TRIP.end+'T12:00:00');const out=[];for(let d=new Date(d0);d<=d1;d.setDate(d.getDate()+1))out.push(new Date(d));return out;}
+function evRow(e,d){const k=favKey(e,d.toISOString().slice(0,10));const on=FAVS.has(k);
+  return `<div class="ev"><time>${e.time||''}</time><div class="body"><span class="cat cat-${e.cat}">${EV_CATS[e.cat]}</span><b>${e.title}</b>${e.where?`<small>${e.where}</small>`:''}${e.note?`<small>${e.note}</small>`:''}${e.url?`<small><a href="${e.url}" target="_blank" rel="noopener">Läs mer ↗</a></small>`:''}</div><button type="button" class="fav" data-fav="${esc(k)}" aria-pressed="${on}" aria-label="${on?'Ta bort från':'Lägg till i'} mina favoriter: ${esc(e.title)}">${HEART_SVG}</button></div>`;}
+function favCount(){const n=favList().reduce((a,g)=>a+g.items.length,0);const b=$('#favCount');b.hidden=!n;b.textContent=n;}
+function favList(){return tripDays().map(d=>({d,items:EVENTS.filter(e=>evApplies(e,d)&&FAVS.has(favKey(e,d.toISOString().slice(0,10)))).sort((a,b)=>(a.t||'').localeCompare(b.t||''))})).filter(g=>g.items.length);}
+function renderFavs(){const box=$('#favList');if(!box)return;const L=favList();
+  box.innerHTML=L.length?L.map(g=>`<section class="favday"><h2>${(t=>t.charAt(0).toUpperCase()+t.slice(1))(g.d.toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'long'}))}<small>${g.items.length} ${g.items.length===1?'sak':'saker'}</small></h2><div class="agenda" style="border-top:0">${g.items.map(e=>evRow(e,g.d)).join('')}</div></section>`).join('')
+   :`<div class="nldet"><div class="empty"><b>Inga favoriter än</b><span>Gå till Events och tryck på hjärtat vid det ni tänker göra, till exempel skidskola, middag eller afterski.</span><a class="btn pri" href="#events" style="margin-top:6px">Gå till Events</a></div></div>`;}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-fav]');if(!b)return;const k=b.dataset.fav;
+  if(FAVS.has(k))FAVS.delete(k);else FAVS.add(k);try{localStorage.setItem(FAV_KEY,JSON.stringify([...FAVS]));}catch(x){}
+  $$(`[data-fav="${CSS.escape(k)}"]`).forEach(x=>{const on=FAVS.has(k);x.setAttribute('aria-pressed',on);x.setAttribute('aria-label',x.getAttribute('aria-label').replace(/^(Ta bort från|Lägg till i)/,on?'Ta bort från':'Lägg till i'));});
+  favCount();if(!$('#v-mina').hidden)renderFavs();});
+addEventListener('viewchange',e=>{if(e.detail==='mina')renderFavs();if(e.detail==='events'&&window.__evRender)window.__evRender();});
+favCount();
 /* ================= EVENTS ================= */
 function initEvents(){
   const d0=new Date(TRIP.start+'T12:00:00');const days=[];for(let i=0;i<8;i++){const d=new Date(d0);d.setDate(d.getDate()+i);days.push(d);}
@@ -1288,9 +1332,9 @@ function initEvents(){
     const d=days[sel];const sun=sunTimes(d,HOUSE_LL[0],HOUSE_LL[1]);
     $('#daysum').innerHTML=`<h2 style="margin-right:6px">${d.toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'long'})}</h2><span class="chip">Soluppgång ${sun.rise}</span><span class="chip">Solnedgång ${sun.set}</span><span class="chip">${sun.len} dagsljus</span>`;
     const list=EVENTS.filter(e=>applies(e,d)&&(cat==='alla'||e.cat===cat)).sort((a,b)=>(a.t||'').localeCompare(b.t||''));
-    $('#agenda').innerHTML=list.map(e=>`<div class="ev"><time>${e.time||''}</time><div class="body"><span class="cat cat-${e.cat}">${CATSV[e.cat]}</span><b>${e.title}</b>${e.where?`<small>${e.where}</small>`:''}${e.note?`<small>${e.note}</small>`:''}${e.url?`<small><a href="${e.url}" target="_blank" rel="noopener">Läs mer ↗</a></small>`:''}</div></div>`).join('')||'<p class="muted" style="padding:12px 0">Inget i den här kategorin den dagen.</p>';
+    $('#agenda').innerHTML=list.map(e=>evRow(e,d)).join('')||'<p class="muted" style="padding:12px 0">Inget i den här kategorin den dagen.</p>';
   }
-  render();
+  render();window.__evRender=render;
   $('#evLede').textContent=EV_LEDE;$('#evNote').innerHTML=EV_NOTE||'';$('#evSrc').innerHTML=SOURCES.events;
 }
 // NOAA-style sunrise/sunset (local time, Europe/Oslo = UTC+1 in January)
