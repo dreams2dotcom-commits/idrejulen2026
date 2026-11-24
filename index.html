@@ -1474,7 +1474,7 @@ function expRender(){const box=$('#lExp');if(!box||box.hidden)return;
   box.innerHTML=`<div class="expsum"><div><span>Totalt</span><b>${kr(total)}</b></div><div><span>Per person i snitt</span><b>${kr(Math.round(total/P.length))}</b></div><div><span>Utlägg</span><b>${E.items.length}</b></div></div>
    <div class="settle"><h3>Så gör ni upp</h3>${tr.length?`<ul>${tr.map(t=>`<li><b>${esc(t.from)}</b> betalar <b>${esc(t.to)}</b><b class="amt">${kr(t.amt)}</b></li>`).join('')}</ul>`:`<p style="margin:0" class="muted">${E.items.length?'Ni är kvitt.':'Inga utlägg än.'}</p>`}
      <div class="bal">${P.map(p=>`<span class="${bal[p]>0?'pos':bal[p]<0?'neg':''}">${esc(p)} ${bal[p]>0?'+':''}${kr(bal[p]||0)}</span>`).join('')}</div>
-     <small class="muted">Plus betyder att personen ska få tillbaka pengar, minus att personen ska betala. Swisha eller Vippsa när resan är slut.</small></div>
+     <small class="muted">Plus betyder att personen ska få tillbaka pengar, minus att personen ska betala. Swisha när resan är slut.</small></div>
    <form class="expform" id="expF"><b>Nytt utlägg</b>
      <div class="grid2"><label>Vad<input id="expWhat" maxlength="60" placeholder="Till exempel mat på ICA" autocomplete="off"></label><label>Belopp (${CUR})<input id="expAmt" inputmode="decimal" placeholder="0" autocomplete="off"></label></div>
      <label>Betalat av<select id="expPaid">${P.map(p=>`<option${p===me?' selected':''}>${esc(p)}</option>`).join('')}</select></label>
