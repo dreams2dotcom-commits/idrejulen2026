@@ -490,6 +490,7 @@ h3{font-weight:700;font-size:17px}
 .tabs .tab[aria-selected="true"]{color:var(--tt);font-weight:800}
 .tab[aria-selected="true"] .ic{background:var(--tc);color:var(--tk);transform:translateY(-1px);box-shadow:0 3px 10px color-mix(in srgb,var(--tc) 45%,transparent)}
 .lb-s{display:none}
+.tabs .tab .lb{text-align:center;line-height:1.15}
 @media (max-width:430px){.tabs .tab{font-size:10px;letter-spacing:0}.tab .ic{width:38px;height:30px}.tab .ic svg{width:20px;height:20px}.lb-l{display:none}.lb-s{display:inline}}
 @media (min-width:1500px){
   .tabs .tab{padding:5px 12px 5px 5px;gap:8px;border-radius:999px;color:var(--hdr-muted);font-size:13px;background:color-mix(in srgb,var(--tc) 14%,transparent)}
@@ -690,6 +691,7 @@ h3{font-weight:700;font-size:17px}
         </div>
       </aside>
       <div id="tools3d">
+        <a class="pill" target="_blank" rel="noopener" href="https://www.idrefjall.se/globalassets/1.-filer/kartor/pistkartor/idrefjall_pistkarta_2026-27_web2.pdf" style="background:var(--accent);border-color:var(--accent);color:var(--accent-ink)">Idre Fjälls pistkarta ↗</a>
         <div class="tbar"><button type="button" id="bWinter" aria-pressed="true">Vinter</button><button type="button" id="bPhoto" aria-pressed="false">Flygbild</button><button type="button" id="bHome3">Huset</button><button type="button" id="bAll3">Översikt</button></div>
       </div>
     </section>
@@ -753,8 +755,7 @@ h3{font-weight:700;font-size:17px}
   <nav class="tabs" role="tablist" aria-label="Sektioner">
     <button class="tab" role="tab" data-go="hem" aria-selected="true"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg></span>Hem</button>
     <button class="tab" role="tab" data-go="huset" aria-selected="false"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/></svg></span>Huset</button>
-    <button class="tab" role="tab" data-go="pistkarta" aria-selected="false"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20z"/><path d="M9 4v13.5M15 6.5V20"/></svg></span><span class="lb-l">Pistkarta</span><span class="lb-s">Karta</span></button>
-    <button class="tab" role="tab" data-go="3d" aria-selected="false"><span class="ic"><svg viewBox="0 0 24 24"><path d="m2.5 19 6.5-11 4 6 3-4 5.5 9z"/><path d="m7.2 10.3 1.8 1.2 1.6-1.1"/></svg></span>3D</button>
+    <button class="tab" role="tab" data-go="3d" aria-selected="false"><span class="ic"><svg viewBox="0 0 24 24"><path d="m2.5 19 6.5-11 4 6 3-4 5.5 9z"/><path d="m7.2 10.3 1.8 1.2 1.6-1.1"/></svg></span><span class="lb">3D Pistkarta</span></button>
     <button class="tab" role="tab" data-go="mat" aria-selected="false"><span class="ic"><svg viewBox="0 0 24 24"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10"/><path d="M17 21V3c-2.2 1.3-3.3 3.8-3.3 7.2V13H17"/></svg></span>Mat</button>
     <button class="tab" role="tab" data-go="events" aria-selected="false"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h3"/></svg></span>Events</button>
     <button class="tab" role="tab" data-go="listor" aria-selected="false"><span class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17.5" rx="2.5"/><path d="m7.5 9 1.5 1.5 2.5-3M13.5 9H17M7.5 15l1.5 1.5 2.5-3M13.5 15H17"/></svg></span>Listor</button>
@@ -950,10 +951,11 @@ const SOURCES={mat:'Källor: idrefjall.se (Mat & nöje), restaurangernas egna si
 <script>
 /* ================= APP SHELL ================= */
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const VIEWS=['hem','huset','pistkarta','3d','mat','events','listor','bilder'];
+const VIEWS=['hem','huset','3d','mat','events','listor','bilder'];
 let dataPromise=null; const getData=()=>dataPromise||(dataPromise=fetch('data.json').then(r=>r.json()));
 const inited={};
 function show(v){
+  if(v==='pistkarta')v='3d';
   if(!VIEWS.includes(v))v='hem';
   $$('.view').forEach(s=>s.hidden=s.dataset.view!==v);
   $$('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.go===v));
@@ -1245,6 +1247,8 @@ function setMode(m){tmat.map=tex[m];tmat.needsUpdate=true;$('#bWinter').setAttri
 $('#bWinter').onclick=()=>setMode('winter');$('#bPhoto').onclick=()=>setMode('photo');
 const homeV=()=>new THREE.Vector3(hx,yAt(hx,hz),hz);
 $('#bHome3').onclick=()=>flyTo(homeV(),1100,0.3,0.9);
+const __f3dDone=new Set();window.__f3d=(ll,nm)=>{const [x,z]=GEO.loc(...ll);if(nm&&!__f3dDone.has(nm)&&!RESTAURANTS.some(r=>r.name===nm&&r.show3d)){__f3dDone.add(nm);addLabel(nm,x,z,'food',22);}flyTo(new THREE.Vector3(x,yAt(x,z),z),950,0.4,0.9);};
+if(window.__f3dPending){const [l,n]=window.__f3dPending;window.__f3dPending=null;setTimeout(()=>__f3d(l,n),1400);}
 $('#bAll3').onclick=()=>flyTo(new THREE.Vector3(250,yAt(250,-150)*.6,-150),5200,0.42,0.98);
 $('#sheetToggle').onclick=e=>{const c=$('#panel').classList.toggle('collapsed');e.currentTarget.textContent=c?'Visa rutter':'Dölj';e.currentTarget.setAttribute('aria-expanded',!c);};
 function resize(){const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);const p=w>720?Math.min(360,w-24)+12:0;camera.aspect=(w+p)/h;if(p)camera.setViewOffset(w+p,h,0,0,w,h);else camera.clearViewOffset();camera.updateProjectionMatrix();}
@@ -1676,8 +1680,8 @@ function sunTimes(date,lat,lon){
   const len=(Jset-Jrise)*24;return {rise:f(Jrise),set:f(Jset),len:Math.floor(len)+' h '+Math.round((len%1)*60)+' min'};
 }
 /* "Visa på kartan" from restaurant cards */
-document.addEventListener('click',e=>{const a=e.target.closest('[data-ll]');if(!a)return;e.preventDefault();const ll=a.dataset.ll.split(',').map(Number);location.hash='pistkarta';
-  if(inited.pistkarta)setTimeout(()=>window.dispatchEvent(new CustomEvent('pm-focus',{detail:ll})),60);else window.__pmFocus=ll;});
+document.addEventListener('click',e=>{const a=e.target.closest('[data-ll]');if(!a)return;e.preventDefault();const ll=a.dataset.ll.split(',').map(Number);const nm=a.closest('.rcard')?.querySelector('h3')?.textContent||'';location.hash='3d';
+  if(window.__f3d)setTimeout(()=>__f3d(ll,nm),80);else window.__f3dPending=[ll,nm];});
 
 /* boot */
 show(location.hash.slice(1)||'hem');
