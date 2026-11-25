@@ -40,19 +40,21 @@ img{max-width:100%}
   --f-body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
   --shadow:0 12px 30px #1b2a3c1f; --r:14px;
+  --h-hem-c:#e5484d; --h-huset-c:#f76b15; --h-karta-c:#ffc53d; --h-3d-c:#30a46c; --h-mat-c:#12a594; --h-events-c:#0090ff; --h-listor-c:#6e56cf; --h-bilder-c:#d6409f;
+  --h-hem-t:#c62a2f; --h-huset-t:#c44d00; --h-karta-t:#946200; --h-3d-t:#1f7a4d; --h-mat-t:#0b7a6d; --h-events-t:#0068c9; --h-listor-t:#5a43b8; --h-bilder-t:#b02b82;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --snow:#0f1823; --paper:#162130; --ink:#e5eef8; --muted:#9db0c5; --line:#27374b; --wash:#1d2b3c;
   --timber:#1d3450; --timber-ink:#e5eef8; --hdr-chip:#ffffff14; --hdr-line:#ffffff33; --hdr-hover:#ffffff1a; --hdr-muted:#b4c8de;
   --accent:#f6a06a; --accent-ink:#1a1008; --accent-strong:#f7a873; --accent-wash:#3a2618; --fjord:#8fc0ee; --lift:#ec9a4a;
   --green:#4cbf7d; --blue:#6ea4ef; --red:#ef6b7c; --black:#e3dcd5; --ok:#4cbf7d; --warn:#e3a33a;
-  --shadow:0 12px 30px #0009; color-scheme:dark}}
+  --shadow:0 12px 30px #0009;  --h-hem-t:#ff8589; --h-huset-t:#ff9e5e; --h-karta-t:#ffd166; --h-3d-t:#4fd18f; --h-mat-t:#3fd2c0; --h-events-t:#66b8ff; --h-listor-t:#a898ff; --h-bilder-t:#f58ccf; color-scheme:dark}}
 :root[data-theme="dark"]{
   --snow:#0f1823; --paper:#162130; --ink:#e5eef8; --muted:#9db0c5; --line:#27374b; --wash:#1d2b3c;
   --timber:#1d3450; --timber-ink:#e5eef8; --hdr-chip:#ffffff14; --hdr-line:#ffffff33; --hdr-hover:#ffffff1a; --hdr-muted:#b4c8de;
   --accent:#f6a06a; --accent-ink:#1a1008; --accent-strong:#f7a873; --accent-wash:#3a2618; --fjord:#8fc0ee; --lift:#ec9a4a;
   --green:#4cbf7d; --blue:#6ea4ef; --red:#ef6b7c; --black:#e3dcd5; --ok:#4cbf7d; --warn:#e3a33a;
-  --shadow:0 12px 30px #0009; color-scheme:dark}
+  --shadow:0 12px 30px #0009;  --h-hem-t:#ff8589; --h-huset-t:#ff9e5e; --h-karta-t:#ffd166; --h-3d-t:#4fd18f; --h-mat-t:#3fd2c0; --h-events-t:#66b8ff; --h-listor-t:#a898ff; --h-bilder-t:#f58ccf; color-scheme:dark}
 html,body{height:100%}
 body{background:var(--snow);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;overflow:hidden;-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit}
@@ -79,7 +81,7 @@ a{color:var(--fjord)}
 .tab{flex:1;min-width:0;display:grid;justify-items:center;gap:6px;padding:14px 1px 10px;border:0;background:none;cursor:pointer;color:var(--muted);font-size:11.5px;font-weight:600;letter-spacing:.01em}
 .tab svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .tab[aria-selected="true"]{color:var(--accent-strong)}
-@media (min-width:1180px){
+@media (min-width:1500px){
   #app{grid-template-rows:auto auto 1fr}
   .tabs{grid-row:1;position:absolute;top:0;left:50%;transform:translateX(-50%);background:transparent;border:0;padding:6px 0;gap:4px;z-index:25}
   .tab{flex:none;grid-auto-flow:column;gap:6px;padding:8px 10px;border-radius:8px;color:var(--hdr-muted);font-size:13px}
@@ -354,9 +356,9 @@ h3{font-weight:700;font-size:17px}
 .empty{color:var(--muted);text-align:center;padding:26px 10px;display:grid;gap:6px;justify-items:center}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--snow);border-radius:12px;padding:10px 14px;display:flex;gap:14px;align-items:center;z-index:80;font-size:14px;box-shadow:var(--shadow);max-width:calc(100% - 32px)}
 .toast button{background:none;border:0;color:var(--accent);font-weight:800;cursor:pointer}
-@media (min-width:1180px){.toast{bottom:24px}}
+@media (min-width:1500px){.toast{bottom:24px}}
 .nlna{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:8px}
-@media (min-width:1180px) and (max-width:1420px){.count{display:none}.inst{margin-left:auto}}
+@media (min-width:1500px) and (max-width:1720px){.count{display:none}.inst{margin-left:auto}}
 
 /* bilder */
 .phtop{display:flex;flex-wrap:wrap;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px}
@@ -471,6 +473,93 @@ h3{font-weight:700;font-size:17px}
 .booklist li.done b{text-decoration:line-through;color:var(--muted)}
 .booklist small{display:block;color:var(--muted);font-size:12.5px}
 .booklist .due{font-weight:700;color:var(--accent-strong)}
+
+/* ===== färgade flikar ===== */
+.tab[data-go="hem"]{--tc:var(--h-hem-c);--tt:var(--h-hem-t);--tk:#fff}
+.tab[data-go="huset"]{--tc:var(--h-huset-c);--tt:var(--h-huset-t);--tk:#fff}
+.tab[data-go="pistkarta"]{--tc:var(--h-karta-c);--tt:var(--h-karta-t);--tk:#3d2a00}
+.tab[data-go="3d"]{--tc:var(--h-3d-c);--tt:var(--h-3d-t);--tk:#fff}
+.tab[data-go="mat"]{--tc:var(--h-mat-c);--tt:var(--h-mat-t);--tk:#fff}
+.tab[data-go="events"]{--tc:var(--h-events-c);--tt:var(--h-events-t);--tk:#fff}
+.tab[data-go="listor"]{--tc:var(--h-listor-c);--tt:var(--h-listor-t);--tk:#fff}
+.tab[data-go="bilder"]{--tc:var(--h-bilder-c);--tt:var(--h-bilder-t);--tk:#fff}
+.tabs .tab{padding:10px 1px 8px;gap:5px;color:var(--muted);font-size:11px}
+.tab .ic{display:grid;place-items:center;width:46px;height:32px;border-radius:999px;background:color-mix(in srgb,var(--tc) 17%,transparent);color:var(--tt);transition:background .15s,color .15s,transform .15s}
+.tab .ic svg{width:21px;height:21px}
+.tab:hover .ic{background:color-mix(in srgb,var(--tc) 30%,transparent)}
+.tabs .tab[aria-selected="true"]{color:var(--tt);font-weight:800}
+.tab[aria-selected="true"] .ic{background:var(--tc);color:var(--tk);transform:translateY(-1px);box-shadow:0 3px 10px color-mix(in srgb,var(--tc) 45%,transparent)}
+.lb-s{display:none}
+@media (max-width:430px){.tabs .tab{font-size:10px;letter-spacing:0}.tab .ic{width:38px;height:30px}.tab .ic svg{width:20px;height:20px}.lb-l{display:none}.lb-s{display:inline}}
+@media (min-width:1500px){
+  .tabs .tab{padding:5px 12px 5px 5px;gap:8px;border-radius:999px;color:var(--hdr-muted);font-size:13px;background:color-mix(in srgb,var(--tc) 14%,transparent)}
+  .tab .ic{width:28px;height:28px;background:var(--tc);color:var(--tk)}
+  .tab .ic svg{width:17px;height:17px}
+  .tabs .tab:hover{background:color-mix(in srgb,var(--tc) 26%,transparent)}
+  .tabs .tab[aria-selected="true"]{background:var(--tc);color:var(--tk)}
+  .tab[aria-selected="true"] .ic{background:color-mix(in srgb,#fff 25%,transparent);box-shadow:none;transform:none}
+}
+/* ===== startsida ===== */
+.hhero{display:grid;gap:6px}
+.hhero h1{font-size:clamp(30px,6.4vw,50px)}
+.hhero .row{margin-top:6px}
+.hgrid{display:grid;gap:14px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:860px){.hgrid{grid-template-columns:repeat(6,minmax(0,1fr));grid-template-areas:"wx wx wx wx sun sun" "ev ev ev lu lu lu" "ev ev ev af af af" "pl pl pl pl pl pl"}
+ #hWx{grid-area:wx}#hSun{grid-area:sun}#hEv{grid-area:ev}#hLunch{grid-area:lu}#hAfter{grid-area:af}#hPlan{grid-area:pl}}
+.hcard{border-radius:20px;padding:16px 18px;display:grid;gap:10px;align-content:start;min-width:0;background:var(--paper);border:1px solid var(--line);position:relative;overflow:hidden}
+.hk{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--kc,var(--muted))}
+.hk a,.hk button{margin-left:auto;text-transform:none;letter-spacing:0;font-size:13px}
+.hk a{font-weight:800;color:var(--kc,var(--fjord));text-decoration:none}
+.hsub{color:var(--muted);font-size:12px}
+#hWx{background:linear-gradient(150deg,#cfe6ff,#e9f3ff 55%,#fff3e6);border-color:#bcd6f2;color:#14263b;--kc:#0068c9}
+#hWx .btn{background:#ffffffb8;border-color:#0000001a;color:#14263b}
+.wxbig{display:flex;align-items:center;gap:14px}
+.wxbig .wic{width:78px;height:78px;flex:none}
+.wxbig b.tmp{display:block;font-family:var(--f-display);font-size:54px;font-weight:800;line-height:.95;letter-spacing:-.02em}
+.wxbig span{font-size:14px;opacity:.8}
+.wxchips{display:flex;flex-wrap:wrap;gap:6px}
+.wxchips span{background:#ffffffb0;border-radius:999px;padding:4px 10px;font-size:12.5px;font-weight:700}
+.wxstrip{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.wxstrip div{display:grid;justify-items:center;gap:1px;background:#ffffff8c;border-radius:12px;padding:6px 2px}
+.wxstrip .wic{width:30px;height:30px}
+.wxstrip small{font-size:11.5px;opacity:.75}
+.wxstrip b{font-size:14px}
+#hSun{background:linear-gradient(170deg,#ffe3b3,#ffc9b8 60%,#f6b3c8);border-color:#f2c09a;color:#4a2412;--kc:#a3401b}
+.sunsvg{width:100%;height:auto;max-width:100%;color:#7a3a1a;font-family:var(--f-mono)}
+.sunmeta{display:flex;justify-content:space-between;gap:6px;flex-wrap:wrap;font-size:12.5px}
+.sunmeta b{font-family:var(--f-mono)}
+#hEv{--kc:var(--h-events-t)}
+#hEv::before,#hLunch::before,#hAfter::before,#hPlan::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--bar)}
+#hEv{--bar:var(--h-events-c)}#hLunch{--bar:var(--h-mat-c);--kc:var(--h-mat-t)}#hAfter{--bar:var(--h-bilder-c);--kc:var(--h-bilder-t)}#hPlan{--bar:var(--h-hem-c);--kc:var(--h-hem-t)}
+.tl{list-style:none;margin:0;padding:0;display:grid}
+.tl li{display:grid;grid-template-columns:66px 14px minmax(0,1fr) 40px;gap:0 8px;align-items:start;padding:7px 0;position:relative}
+.tl li::before{content:"";grid-column:2;grid-row:1;width:10px;height:10px;border-radius:50%;background:var(--dot);margin-top:5px;box-shadow:0 0 0 3px color-mix(in srgb,var(--dot) 22%,transparent)}
+.tl li::after{content:"";position:absolute;left:calc(66px + 8px + 4px);top:24px;bottom:-8px;width:2px;background:var(--line)}
+.tl li:last-child::after{display:none}
+.tl time{grid-column:1;grid-row:1;font-family:var(--f-mono);font-size:12.5px;font-weight:600;padding-top:1px;line-height:1.3;overflow-wrap:anywhere}
+.tl time i{display:block;font-style:normal;font-weight:500;color:var(--muted)}
+.tl time.tx{font-family:var(--f-body);font-size:12px;font-weight:600;color:var(--muted)}
+.tl li>div{grid-column:3;grid-row:1;min-width:0}
+.tl b{font-size:14.5px;display:block}
+.tl small{display:block;color:var(--muted);font-size:12.5px}
+.tl .fav{grid-column:4;grid-row:1;width:40px;height:40px;margin-top:-8px}
+.more{font-weight:800;font-size:13px;color:var(--fjord);text-decoration:none}
+.tips{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.tips li{display:grid;gap:3px;padding:10px 12px;border-radius:14px;background:var(--wash)}
+.tip-h{display:flex;gap:8px;align-items:baseline}
+.tip-h b{font-size:15.5px}
+.tip-h span{margin-left:auto;font-family:var(--f-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.tips p{margin:0;font-size:13.5px}
+.tips small{color:var(--muted);font-size:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.plantx{margin:0;white-space:pre-line;font-size:15.5px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #hWx{background:linear-gradient(150deg,#16324f,#1b2b45 55%,#3a2a24);border-color:#2a4767;color:#e8f1fb;--kc:#8fc6ff}
+ :root:not([data-theme="light"]) #hWx .btn,:root:not([data-theme="light"]) .wxchips span,:root:not([data-theme="light"]) .wxstrip div{background:#ffffff14;color:#e8f1fb;border-color:#ffffff22}
+ :root:not([data-theme="light"]) #hSun{background:linear-gradient(170deg,#4a2a18,#4a2030 60%,#3a1c33);border-color:#5a3424;color:#ffe2cc;--kc:#ffb48a}
+ :root:not([data-theme="light"]) .sunsvg{color:#ffd0b0}}
+:root[data-theme="dark"] #hWx{background:linear-gradient(150deg,#16324f,#1b2b45 55%,#3a2a24);border-color:#2a4767;color:#e8f1fb;--kc:#8fc6ff}
+:root[data-theme="dark"] #hWx .btn,:root[data-theme="dark"] .wxchips span,:root[data-theme="dark"] .wxstrip div{background:#ffffff14;color:#e8f1fb;border-color:#ffffff22}
+:root[data-theme="dark"] #hSun{background:linear-gradient(170deg,#4a2a18,#4a2030 60%,#3a1c33);border-color:#5a3424;color:#ffe2cc;--kc:#ffb48a}
+:root[data-theme="dark"] .sunsvg{color:#ffd0b0}
 /* install sheet */
 #install{position:fixed;inset:0;z-index:90;background:#05080d99;display:grid;align-items:end;justify-items:center}
 #install .sheet{box-sizing:border-box;background:var(--paper);color:var(--ink);width:min(560px,100%);border-radius:16px 16px 0 0;padding:20px max(20px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));display:grid;gap:14px;max-height:90%;overflow:auto}
@@ -495,8 +584,24 @@ h3{font-weight:700;font-size:17px}
   </div>
 
   <main>
+    <!-- HEM -->
+    <section class="view" id="v-hem" data-view="hem" aria-label="Hem">
+      <div class="wrap">
+        <div class="hhero"><span class="eyebrow" id="hEyebrow"></span><h1 id="hTitle"></h1><p class="lede" id="hSub" style="margin:0"></p>
+          <div class="row"><a class="btn" href="#huset">Huset ›</a><a class="btn" href="#huset" onclick="setTimeout(()=>document.getElementById('travel')?.scrollIntoView({behavior:'smooth'}),120)">Resan dit ›</a><a class="btn" href="#events">Alla events ›</a></div></div>
+        <div class="hgrid" id="homeBody">
+          <div class="hcard" id="hWx"></div>
+          <div class="hcard" id="hSun"></div>
+          <div class="hcard" id="hEv"></div>
+          <div class="hcard" id="hLunch"></div>
+          <div class="hcard" id="hAfter"></div>
+          <div class="hcard" id="hPlan"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- HUSET -->
-    <section class="view" id="v-huset" data-view="huset" aria-label="Huset">
+    <section class="view" id="v-huset" data-view="huset" aria-label="Huset" hidden>
       <div class="wrap">
         <figure class="hero" style="margin:0">
           <img src="house/r02.jpg" alt="Huset på Nedre Hjelmbackevägen 17 i vinterskrud" fetchpriority="high">
@@ -646,13 +751,14 @@ h3{font-weight:700;font-size:17px}
   </main>
 
   <nav class="tabs" role="tablist" aria-label="Sektioner">
-    <button class="tab" role="tab" data-go="huset" aria-selected="true"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/></svg>Huset</button>
-    <button class="tab" role="tab" data-go="pistkarta" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20z"/><path d="M9 4v13.5M15 6.5V20"/></svg>Pistkarta</button>
-    <button class="tab" role="tab" data-go="3d" aria-selected="false"><svg viewBox="0 0 24 24"><path d="m2.5 19 6.5-11 4 6 3-4 5.5 9z"/><path d="m7.2 10.3 1.8 1.2 1.6-1.1"/></svg>3D</button>
-    <button class="tab" role="tab" data-go="mat" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10"/><path d="M17 21V3c-2.2 1.3-3.3 3.8-3.3 7.2V13H17"/></svg>Mat</button>
-    <button class="tab" role="tab" data-go="events" aria-selected="false"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h3"/></svg>Events</button>
-    <button class="tab" role="tab" data-go="listor" aria-selected="false"><svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17.5" rx="2.5"/><path d="m7.5 9 1.5 1.5 2.5-3M13.5 9H17M7.5 15l1.5 1.5 2.5-3M13.5 15H17"/></svg>Listor</button>
-    <button class="tab" role="tab" data-go="bilder" aria-selected="false"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2.5"/><circle cx="9" cy="10.5" r="1.8"/><path d="m21 16-5-5-8.5 9"/></svg>Bilder</button>
+    <button class="tab" role="tab" data-go="hem" aria-selected="true"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg></span>Hem</button>
+    <button class="tab" role="tab" data-go="huset" aria-selected="false"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5v-5h4v5"/></svg></span>Huset</button>
+    <button class="tab" role="tab" data-go="pistkarta" aria-selected="false"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 6.5 9 4l6 2.5L21 4v13.5L15 20l-6-2.5L3 20z"/><path d="M9 4v13.5M15 6.5V20"/></svg></span><span class="lb-l">Pistkarta</span><span class="lb-s">Karta</span></button>
+    <button class="tab" role="tab" data-go="3d" aria-selected="false"><span class="ic"><svg viewBox="0 0 24 24"><path d="m2.5 19 6.5-11 4 6 3-4 5.5 9z"/><path d="m7.2 10.3 1.8 1.2 1.6-1.1"/></svg></span>3D</button>
+    <button class="tab" role="tab" data-go="mat" aria-selected="false"><span class="ic"><svg viewBox="0 0 24 24"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10"/><path d="M17 21V3c-2.2 1.3-3.3 3.8-3.3 7.2V13H17"/></svg></span>Mat</button>
+    <button class="tab" role="tab" data-go="events" aria-selected="false"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h3"/></svg></span>Events</button>
+    <button class="tab" role="tab" data-go="listor" aria-selected="false"><span class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17.5" rx="2.5"/><path d="m7.5 9 1.5 1.5 2.5-3M13.5 9H17M7.5 15l1.5 1.5 2.5-3M13.5 15H17"/></svg></span>Listor</button>
+    <button class="tab" role="tab" data-go="bilder" aria-selected="false"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2.5"/><circle cx="9" cy="10.5" r="1.8"/><path d="m21 16-5-5-8.5 9"/></svg></span>Bilder</button>
   </nav>
 </div>
 
@@ -844,11 +950,11 @@ const SOURCES={mat:'Källor: idrefjall.se (Mat & nöje), restaurangernas egna si
 <script>
 /* ================= APP SHELL ================= */
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const VIEWS=['huset','pistkarta','3d','mat','events','listor','bilder'];
+const VIEWS=['hem','huset','pistkarta','3d','mat','events','listor','bilder'];
 let dataPromise=null; const getData=()=>dataPromise||(dataPromise=fetch('data.json').then(r=>r.json()));
 const inited={};
 function show(v){
-  if(!VIEWS.includes(v))v='huset';
+  if(!VIEWS.includes(v))v='hem';
   $$('.view').forEach(s=>s.hidden=s.dataset.view!==v);
   $$('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.go===v));
   if(!inited[v]){inited[v]=true;({pistkarta:initPistmap,'3d':init3D,mat:initMat,events:initEvents,listor:initNotes,bilder:initPhotos})[v]?.();}
@@ -890,7 +996,8 @@ addEventListener('hashchange',()=>show(location.hash.slice(1)));
   let data=null,fetchedAt=null,live=false;
   try{const c=JSON.parse(localStorage.getItem(KEY)||'null');if(c&&c.d){data=c.d;fetchedAt=new Date(c.t);}}catch(e){}
   function snowDepthCm(d){const v=d&&d.current&&d.current.snow_depth;return v==null?null:Math.round(v*100);}
-  function paintBar(){
+  window.wxIcon=icon;window.WMO=WMO;
+  function paintBar(){window.__wx={data,live};setTimeout(()=>dispatchEvent(new Event('wxupdate')));
     if(!data){$('#wxIc').innerHTML=icon(3);$('#wxTemp').textContent='';$('#wxDesc').textContent='Väder och snö';$('#wxSub').textContent='Tryck för prognos och snörapport';return;}
     const c=data.current;$('#wxIc').innerHTML=icon(c.weather_code,c.is_day);$('#wxTemp').textContent=deg(c.temperature_2m);
     $('#wxDesc').textContent='Idag · '+(WMO[c.weather_code]||'');const sd=snowDepthCm(data);
@@ -1573,7 +1680,67 @@ document.addEventListener('click',e=>{const a=e.target.closest('[data-ll]');if(!
   if(inited.pistkarta)setTimeout(()=>window.dispatchEvent(new CustomEvent('pm-focus',{detail:ll})),60);else window.__pmFocus=ll;});
 
 /* boot */
-show(location.hash.slice(1)||'huset');
+show(location.hash.slice(1)||'hem');
+const SNOW_URL='https://www.idrefjall.se/om-oss/information/vader/';
+const LUNCH_TIPS=[
+ {name:'Utsikten',why:'Närmast huset, uppe vid Sydgondolens topp. Pizza, husmanskost och pannkakor med utsikt.'},
+ {name:'Störröset Rotisserie',why:'Fransk rotisserie mitt i Västbacken vid Väst 6:ans mellanstation. Beställ i appen.'},
+ {name:'Vildmarksnästet',why:'Älg, hjort och röding vid Skidstadion. Högst betyg på Google.'},
+ {name:'Charlies',why:'Snabb lunch mitt i Västbacken. Känt för pommesen.'},
+ {name:'PW Kök & Bar',why:'Lite finare lunch på Pernilla Wiberg Hotel, mitt i Pernillabacken.'}];
+const AFTER_NONE='Ingen afterski i programmet den här dagen. Den stora afterskin på Värdshuset drar igång juldagen 25 dec. Hit kan ni gå ändå:';
+const AFTER_TIPS=[{name:'Charlies',why:'Bar och afterski mitt i Västbacken, öppet till 18.'}];
+/* ================= HEM (startsida) ================= */
+const distKm=ll=>{if(!ll)return null;const R=6371,r=Math.PI/180,dl=(ll[0]-HOUSE_LL[0])*r,dn=(ll[1]-HOUSE_LL[1])*r;const a=Math.sin(dl/2)**2+Math.cos(HOUSE_LL[0]*r)*Math.cos(ll[0]*r)*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(a));};
+const distTxt=ll=>{const k=distKm(ll);if(k==null)return '';return k<0.95?'ca '+Math.round(k*10)*100+' m':'ca '+k.toLocaleString('sv-SE',{maximumFractionDigits:1})+' km';};
+function homeDay(){const now=new Date(),s=new Date(TRIP.start+'T00:00:00'),e=new Date(TRIP.end+'T23:59:59');
+  if(now>=s&&now<=e)return {d:new Date(now.getFullYear(),now.getMonth(),now.getDate(),12),live:true};
+  const p=new Date(TRIP.start+'T12:00:00');p.setDate(p.getDate()+1);return {d:p,live:false};}
+const WD_LONG=d=>{const t=d.toLocaleDateString('sv-SE',{weekday:'long',day:'numeric',month:'long'});return t.charAt(0).toUpperCase()+t.slice(1);};
+const CAT_COL={lift:'var(--lift)',skiskola:'var(--green)',afterski:'var(--h-bilder-c)',event:'var(--h-events-c)',mat:'var(--h-mat-c)'};
+function sunArc(day,live){const st=sunTimes(day,HOUSE_LL[0],HOUSE_LL[1]);const toM=t=>{const [h,m]=t.split(':').map(Number);return h*60+m;};
+  const r0=toM(st.rise),s0=toM(st.set),now=new Date(),nm=now.getHours()*60+now.getMinutes();const f=(nm-r0)/(s0-r0);const up=f>=0&&f<=1;
+  const W=300,H=118,x0=26,x1=274,yH=96,peak=26;const pt=t=>{const x=x0+(x1-x0)*t;const y=yH-(yH-peak)*Math.sin(Math.PI*t);return [x,y];};
+  let path='';for(let i=0;i<=40;i++){const [x,y]=pt(i/40);path+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);}
+  const [sx,sy]=pt(Math.min(1,Math.max(0,f)));
+  return `<svg viewBox="0 0 ${W} ${H}" class="sunsvg" role="img" aria-label="Solen går upp ${st.rise} och ner ${st.set}">
+   <path d="${path}" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="2" stroke-dasharray="3 5"/>
+   <line x1="8" x2="${W-8}" y1="${yH}" y2="${yH}" stroke="currentColor" stroke-opacity=".45" stroke-width="1.5"/>
+   ${up?`<circle cx="${sx}" cy="${sy}" r="15" fill="#ffd166" opacity=".35"/><circle cx="${sx}" cy="${sy}" r="9" fill="#ffb02e"/>`:`<circle cx="${nm<r0?x0:x1}" cy="${yH}" r="7" fill="#ffb02e" opacity=".55"/>`}
+   <text x="${x0}" y="${H-4}" text-anchor="middle" font-size="12" fill="currentColor" font-weight="700">${st.rise}</text>
+   <text x="${x1}" y="${H-4}" text-anchor="middle" font-size="12" fill="currentColor" font-weight="700">${st.set}</text></svg>
+   <div class="sunmeta"><span>Soluppgång <b>${st.rise}</b></span><span>${st.len} dagsljus</span><span>Solnedgång <b>${st.set}</b></span></div>${live?'':'<small class="hsub">Solen just nu, om det vore den dagen.</small>'}`;}
+function homeWx(){const w=window.__wx;const el=$('#hWx');if(!el)return;
+  if(!w||!w.data){el.innerHTML=`<div class="hk">Väder &amp; snö</div><div class="wxbig"><span class="wic">${window.wxIcon?wxIcon(3):''}</span><div><b class="tmp">–°</b><span>Prognosen visas i appen</span></div></div><div class="row"><button type="button" class="btn" data-open-wx>Prognos och snörapport</button></div>`;return;}
+  const c=w.data.current,dd=w.data.daily;const sd=c.snow_depth==null?null:Math.round(c.snow_depth*100);const WD=['sön','mån','tis','ons','tor','fre','lör'];
+  el.innerHTML=`<div class="hk">Väder just nu${w.live?'':' · senast hämtat'}</div>
+   <div class="wxbig"><span class="wic">${wxIcon(c.weather_code,c.is_day)}</span><div><b class="tmp">${Math.round(c.temperature_2m)}°</b><span>${WMO[c.weather_code]||''} · känns som ${Math.round(c.apparent_temperature)}°</span></div></div>
+   <div class="wxchips"><span>Vind ${Math.round(c.wind_speed_10m)} m/s</span>${sd!=null?`<span>Snödjup vid huset ${sd} cm</span>`:''}<span>Idag ${Math.round(dd.temperature_2m_max[0])}° / ${Math.round(dd.temperature_2m_min[0])}°</span></div>
+   <div class="wxstrip">${dd.time.slice(1,6).map((t,i)=>{const d=new Date(t+'T12:00:00');const sn=dd.snowfall_sum[i+1];return `<div><small>${WD[d.getDay()]}</small><span class="wic">${wxIcon(dd.weather_code[i+1])}</span><b>${Math.round(dd.temperature_2m_max[i+1])}°</b><small>${sn>=0.5?Math.round(sn)+' cm':'&nbsp;'}</small></div>`;}).join('')}</div>
+   <div class="row"><button type="button" class="btn" data-open-wx>Hela veckan</button><a class="btn" href="${SNOW_URL}" target="_blank" rel="noopener">Snörapport ↗</a></div>`;}
+function pickTips(list,d){const wd=d.getDay();const L=list.filter(t=>!t.days||t.days.includes(wd));const i0=Math.floor(d/864e5)%L.length;return [0,1,2].map(k=>L[(i0+k)%L.length]).filter((x,i,a)=>a.indexOf(x)===i);}
+function homeRender(){const box=$('#homeBody');if(!box)return;const {d,live}=homeDay();const ds=d.toISOString().slice(0,10);
+  const now=new Date(),start=new Date(TRIP.start+'T00:00:00');const daysTo=Math.ceil((start-now)/864e5);
+  $('#hEyebrow').textContent=live?'Idag':'Förhandstitt på en dag på resan';
+  $('#hTitle').textContent=WD_LONG(d);
+  $('#hSub').textContent=live?'Så här ser dagen ut.':(daysTo>0?`${daysTo} ${daysTo===1?'dag':'dagar'} kvar till resan. Så här kan en dag se ut.`:'Resan är slut. Tack för i år!');
+  $('#hSun').innerHTML=`<div class="hk">Sol</div>`+sunArc(d,live);
+  homeWx();
+  const evs=EVENTS.filter(e=>evApplies(e,d)&&e.cat!=='afterski').sort((a,b)=>(a.t||'').localeCompare(b.t||''));
+  $('#hEv').innerHTML=`<div class="hk">Dagens events<a href="#events">Alla ›</a></div>${evs.length?`<ol class="tl">${evs.slice(0,9).map(e=>{const k=favKey(e,ds);const on=!!(nview().favs||{})[k];return `<li style="--dot:${CAT_COL[e.cat]||'var(--muted)'}">${(()=>{const t=(e.time||'').replace(/^från /,'');const m=t.match(/^(\d\d:\d\d)\s*[–-]\s*(\d\d:\d\d)$/);return m?`<time>${m[1]}<i>–${m[2]}</i></time>`:/^\d\d:\d\d$/.test(t)?`<time>${t}</time>`:`<time class="tx">${esc(t)}</time>`;})()}<div><b>${e.title}</b>${e.where?`<small>${e.where}</small>`:''}</div><button type="button" class="fav" data-fav="${esc(k)}" aria-pressed="${on}" aria-label="${on?'Ta bort från':'Lägg till i'} favoriterna: ${esc(e.title)}">${HEART_SVG}</button></li>`;}).join('')}</ol>${evs.length>9?`<a class="more" href="#events">${evs.length-9} till under Events ›</a>`:''}`:'<p class="muted">Inget i programmet den här dagen.</p>'}`;
+  const tips=pickTips(LUNCH_TIPS,d).map(t=>({...t,r:RESTAURANTS.find(r=>r.name===t.name)})).filter(t=>t.r);
+  $('#hLunch').innerHTML=`<div class="hk">Lunchtips<a href="#mat">Alla ›</a></div><ul class="tips">${tips.map(t=>`<li><div class="tip-h"><b>${esc(t.name)}</b><span>${distTxt(t.r.ll)}</span></div><p>${t.why}</p>${t.r.hours?`<small>${esc(t.r.hours)}</small>`:''}</li>`).join('')}</ul>`;
+  const as=EVENTS.filter(e=>evApplies(e,d)&&e.cat==='afterski').sort((a,b)=>(a.t||'').localeCompare(b.t||''));
+  $('#hAfter').innerHTML=`<div class="hk">Dagens afterski</div>${as.length?`<ul class="tips">${as.slice(0,3).map(e=>`<li><div class="tip-h"><b>${e.title}</b><span>${esc(e.time||'')}</span></div>${e.where?`<p>${e.where}</p>`:''}${e.note?`<small>${e.note}</small>`:''}</li>`).join('')}</ul>`
+    :`<p class="muted" style="margin:0 0 8px">${AFTER_NONE}</p><ul class="tips">${AFTER_TIPS.map(t=>{const r=RESTAURANTS.find(x=>x.name===t.name);return `<li><div class="tip-h"><b>${esc(t.name)}</b><span>${r?distTxt(r.ll):''}</span></div><p>${t.why}</p></li>`;}).join('')}</ul>`}`;
+  const p=(nview().plans||{})[ds];
+  $('#hPlan').innerHTML=`<div class="hk">Plan för dagen<button type="button" class="btn" data-plan="${ds}">${p?'Ändra':'Skriv en plan'}</button></div>${p?`<p class="plantx">${esc(p.text)}</p><small class="hsub">${esc(p.by||'Någon')} · ${fmtWhen(p.ts)}</small>`:'<p class="muted" style="margin:0">Ingen plan än. Skriv samlingstid, lunchställe eller vem som lagar middag, så ser alla det.</p>'}`;
+}
+document.addEventListener('click',e=>{if(e.target.closest('[data-open-wx]'))$('#wxBtn').click();});
+addEventListener('wxupdate',homeWx);
+(window.__syncHooks=window.__syncHooks||[]).push(()=>{if(!$('#v-hem').hidden)homeRender();});
+addEventListener('viewchange',e=>{if(e.detail==='hem')homeRender();});
+homeRender();
 </script>
 
 <script>
